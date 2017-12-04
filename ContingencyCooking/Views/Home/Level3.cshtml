@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Level3";
+}
+
+<h2>Level3</h2>
+
+<img src="@ViewBag.Photo" style="height: 150px" /><br />
+
+RecipeID: @ViewBag.RecipeID<br />
+Cuisine: @ViewBag.Cuisine<br />
+<table class="table">
+    <thead><tr><th>Name</th></tr></thead>
+    @for (int i = 0; i < ViewBag.Ingredients.Count; i++)
+    {
+        <tr><td>@ViewBag.Ingredients[i].Name<br /></td></tr>
+    }
+</table>
+
+<h3>Y'all ready for this?</h3>

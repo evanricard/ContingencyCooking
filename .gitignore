@@ -261,7 +261,7 @@ __pycache__/
 *.pyc
 
 Web.config
-
 Web.Debug.config
-
 Web.Release.config
+ContingencyCooking/Web.Debug.config
+ContingencyCooking/Web.Release.config

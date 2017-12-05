@@ -158,17 +158,18 @@ namespace ContingencyCooking.Controllers
             //Goes through instructions, then removes ingredients from instructions
             List<string> ingString = new List<string>();
 
+            ViewBag.jdata = JsonData["Ingredients"];
+
             foreach (var item in JsonData["Ingredients"])
             {
-                ingString.AddRange(item["Name"].ToString().Split(' '));
+                ingString.Add(item["Name"].ToString());
             }
 
             string instString = JsonData["Instructions"].ToString();
 
             for (int i = 0; i < ingString.Count; i++)
             {
-                //instString = instString.Replace(ingString[i], "____");
-                instString = Regex.Replace(instString, ingString[i], "____", RegexOptions.IgnoreCase);
+                instString = instString.Replace(ingString[i], "____");
             }
 
             ViewBag.finalInstructions = instString;

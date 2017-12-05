@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "RateExperience";
+}
+
+<h1>Rate Experience</h1>
+<h2>How'd it go?</h2>
+<button class="btn-default" onclick="">Great!</button>
+<button class="btn-default" onclick="/Home/Rating?rating=false">Horrible!</button>
+
+@*<form action="/Home/Rating" method="post"></form>
+<input type="submit" value="Great!" name="rating" />
+
+<form action="/Home/Rating" method="post"></form>
+<input type="submit" value="Not Great!" name="rating" />*@
+
+
+<form action="/Home/Rating" method="post">
+    <button class="btn-default" name="great" /><br />
+    <input type="submit" value="Great!" />
+</form>
+
+<form action="/Home/Rating" method="post">
+    <button class="btn-default" name="notGreat" /><br />
+    <input type="submit" value="Not Great!" />
+</form>
+
+
+@*Upload shit here*@
+
+

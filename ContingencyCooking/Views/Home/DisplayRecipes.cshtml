@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "DisplayRecipes";
+}
+
+<h2>DisplayRecipes</h2>
+
+@foreach (var item in ViewBag.Results)
+{
+    <a href="/Home/SearchById?RecipeID=@item.RecipeID">@item.Title</a>; 
+    <img src="@item.PhotoUrl" style="height: 150px"/>
+    <br />
+}

@@ -3,12 +3,11 @@
     ViewBag.Title = "Manage";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h3 class="text-center">Change your account settings</h3>
+<hr />
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
-    <h4>Change your account settings</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>Password:</dt>
         <dd>
@@ -23,7 +22,7 @@
             }
             ]
         </dd>
-        <dt>External Logins:</dt>
+        <dt>Social Logins:</dt>
         <dd>
             @Model.Logins.Count [
             @Html.ActionLink("Manage", "ManageLogins") ]
@@ -59,8 +58,9 @@
         <dt>Two-Factor Authentication:</dt>
         <dd>
             <p>
-                There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication.
+                There are no two-factor authentication providers configured. 
+                @*See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+                for details on setting up this ASP.NET application to support two-factor authentication.*@
             </p>
             @*@if (Model.TwoFactor)
                 {

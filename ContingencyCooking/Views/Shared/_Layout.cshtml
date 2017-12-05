@@ -22,10 +22,10 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
                     @*<li><a href="/Home/GetLasagna/">Get Lasagna</a></li>*@
                     <li><a href="/Home/Search/">Cook!</a></li>
-                    <li><a href="/Home/ProfileInfo/">Profile Info</a></li>
+                    <li>@Html.ActionLink("Profile Info", "Index", "Manage")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -36,7 +36,7 @@
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - <a href="https://github.com/evanricard/ContingencyCooking">Github</a>, 
-            @Html.ActionLink("Home", "Index", "Home"), @Html.ActionLink("About", "About", "Home")</p
+            @Html.ActionLink("Home", "Index", "Home"), @Html.ActionLink("About", "About", "Home")</p>
         </footer>
     </div>
 

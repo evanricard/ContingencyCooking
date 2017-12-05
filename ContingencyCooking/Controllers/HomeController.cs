@@ -5,6 +5,7 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -155,6 +156,25 @@ namespace ContingencyCooking.Controllers
             ViewBag.Ingredients = JsonData["Ingredients"]; //In view add .(whatever) to pull info and throw into for loop
             ViewBag.Instructions = JsonData["Instructions"];
             ViewBag.Photo = JsonData["PhotoUrl"];
+
+            //Goes through instructions, then removes ingredients from instructions
+            List<string> ingString = new List<string>();
+
+            ViewBag.jdata = JsonData["Ingredients"];
+
+            foreach (var item in JsonData["Ingredients"])
+            {
+                ingString.Add(item["Name"].ToString());
+            }
+
+            string instString = JsonData["Instructions"].ToString();
+
+            for (int i = 0; i < ingString.Count; i++)
+            {
+                instString = instString.Replace(ingString[i], "____");
+            }
+
+            ViewBag.finalInstructions = instString;
 
             return View("Level2");
         }

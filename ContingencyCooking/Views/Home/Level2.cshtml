@@ -3,49 +3,22 @@
     ViewBag.Title = "Level2";
 }
 
-<style>
-    #instructions {
-        width: 75%;
-        text-align: center;
-        left: 50%;
-        margin-left: auto;
-        margin-right: auto;
+<h2>Level2</h2>
+
+<img src="@ViewBag.Photo" style="height: 150px" /><br />
+
+RecipeID: @ViewBag.RecipeID<br />
+Cuisine: @ViewBag.Cuisine<br />
+<table class="table">
+    <thead><tr><th>Name</th></tr></thead>
+    @for (int i = 0; i < ViewBag.Ingredients.Count; i++)
+    {
+        <tr><td>@ViewBag.Ingredients[i].Name</td></tr>
+        <br />
     }
+</table>
 
-    #ingredientsTable {
-        width: 75%;
-        left: 50%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    body{
-        background:url(@ViewBag.Photo);
-    }
-</style>
-
-<div id="ingredientsTable">
-
-    <h2>Level2</h2>
-
-    <center><img src="@ViewBag.Photo" style="height: 250px" /><br /></center>
-
-    RecipeID: @ViewBag.RecipeID<br />
-    Cuisine: @ViewBag.Cuisine<br />
-
-    <table class="table">
-        <thead><tr><th>Ingredients</th></tr></thead>
-        @for (int i = 0; i < ViewBag.Ingredients.Count; i++)
-        {
-            <tr><td>@ViewBag.Ingredients[i].Name<br /></td></tr>
-        }
-    </table>
-</div>
-
-<center><h2><u>Instructions</u></h2></center>
-
-<div id="instructions"> @ViewBag.finalInstructions</div>
-
+@ViewBag.finalInstructions
 
 <form action="/Home/RateExperience" method="post">
     <input type="text" name="Difficulty" value="2" readonly hidden />

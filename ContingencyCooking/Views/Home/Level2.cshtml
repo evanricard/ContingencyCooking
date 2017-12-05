@@ -45,3 +45,10 @@
 <center><h2><u>Instructions</u></h2></center>
 
 <div id="instructions"> @ViewBag.finalInstructions</div>
+
+
+<form action="/Home/RateExperience" method="post">
+    <input type="text" name="Difficulty" value="2" readonly hidden />
+    <input type="text" name="RecipeID" value="@ViewBag.RecipeID" readonly hidden />
+    <input type="submit" value="I am finished cooking!" /><br />
+</form>

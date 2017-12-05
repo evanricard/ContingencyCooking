@@ -21,15 +21,12 @@ namespace ContingencyCooking.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-            string apikey = ConfigurationManager.AppSettings["BigOven"];
+            //string apikey = ConfigurationManager.AppSettings["BigOven"];
             return View();
         }
         public ActionResult Search()
@@ -208,15 +205,11 @@ namespace ContingencyCooking.Controllers
             return View("Level1");
         }
 
-        public ActionResult RateExperience()
+        public ActionResult RateExperience(string RecipeID, string Difficulty)
         {
-            return View();
-        }
-
-        //TODO: Rating
-        public ActionResult SubmitRecipeAttempt(RecipeAttempt attempt)
-        {
-            return View();
+            ViewBag.RecipeID = RecipeID;
+            ViewBag.Difficulty = Difficulty;
+            return View("RateExperience");
         }
 
     }

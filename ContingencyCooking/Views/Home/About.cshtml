@@ -1,7 +1,32 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h1 class="text-center">@ViewBag.Title</h1>
 
-<p>Use this area to provide additional information.</p>
+<table class="table">
+    <tr>
+        <td class="col-md-4">
+            <a href="https://www.linkedin.com/in/pierce-lauring/">
+                <img src="~/Content/Images/pierce.png" style="height:200px" />
+            </a>
+             <p> Pierce is a strong critical thinker with a passion for utilizing 
+            problem-solving skills in the coding and software development environment.</p>
+        </td>
+        <td class="col-md-4">
+            <a href="https://www.linkedin.com/in/davidryda/">
+                <img src="~/Content/Images/david.jpg" style="height:200px" />
+            </a>
+            <p> David's got a background in business logistics but his real 
+            expertise is in navigating data structures and figuring out how to logistically solve coding problems.</p>
+        </td>
+        <td class="col-md-4">
+            <a href="https://www.linkedin.com/in/evanricard">
+                <img src="~/Content/Images/Kevin.png" style="height:200px" />
+            </a> 
+            <p> Evan is a self-starter and a tech enthusiast. 
+            You'll find he often tries to approach problems from his unique perspective
+            as a digital artist and modern-day programmer.</p>
+            @*<a href="mailto:evanricard@gmail.com">Mail me</a>*@
+        </td>
+    </tr>
+</table>

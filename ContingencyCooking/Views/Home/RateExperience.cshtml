@@ -2,30 +2,26 @@
 @{
     ViewBag.Title = "RateExperience";
 }
+@using Microsoft.AspNet.Identity
+<h2>New Experience Form</h2>
 
-<h1>Rate Experience</h1>
-<h2>How'd it go?</h2>
-<button class="btn-default" onclick="">Great!</button>
-<button class="btn-default" onclick="/Home/Rating?rating=false">Horrible!</button>
+<form action="/Database/SubmitRecipeAttempt" method="post">
+    <label>User_ID</label><input type="text" name="User_ID" value="@User.Identity.GetUserId()" readonly/><br />
+    <label>RecipeID</label><input type="text" name="RecipeID" value="@ViewBag.RecipeID" readonly/><br />
+    <label>Difficulty</label><input type="text" name="Difficulty" value="@ViewBag.Difficulty" readonly/><br />
+    <label>Rating</label><select type="text" name="Rating">
+                             <option value="1">1</option>
+                             <option value="2">2</option>
+                             <option value="3">3</option>
+                             <option value="4">4</option>
+                             <option value="5">5</option></select><br />
+    <label>image</label><input type="text" name="image" value="null"/><br />
+    <input type="submit" value="Save your cooking experience!" /><br />
 
-@*<form action="/Home/Rating" method="post"></form>
-<input type="submit" value="Great!" name="rating" />
-
-<form action="/Home/Rating" method="post"></form>
-<input type="submit" value="Not Great!" name="rating" />*@
-
-
-<form action="/Home/SubmitRecipeAttempt" method="post">
-    <button class="btn-default" name="great" /><br />
-    <input type="submit" value="Great!" />
-</form>
-
-<form action="/Home/Rating" method="post">
-    <button class="btn-default" name="notGreat" /><br />
-    <input type="submit" value="Not Great!" />
 </form>
 
 
 @*Upload shit here*@
 
 
+    

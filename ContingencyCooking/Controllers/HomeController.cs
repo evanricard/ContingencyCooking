@@ -35,6 +35,7 @@ namespace ContingencyCooking.Controllers
             return View();
         }
 
+        //TODO: Rename
         public ActionResult GetLasagna()
         {
             string apiKey = ConfigurationManager.AppSettings["BigOven"];
@@ -193,6 +194,7 @@ namespace ContingencyCooking.Controllers
             return View();
         }
 
+        //TODO: Rating
         public ActionResult Rating(string rating)
         {
             if (rating == "great")
@@ -208,5 +210,5 @@ namespace ContingencyCooking.Controllers
         }
 
     }
-    
+
 }

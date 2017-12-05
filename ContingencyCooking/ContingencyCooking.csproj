@@ -119,6 +119,8 @@
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -202,6 +204,27 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Recipe.cs">
+      <DependentUpon>RecipeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecipeAttempt.cs">
+      <DependentUpon>RecipeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecipeDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecipeDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecipeDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecipeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecipeDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecipeDB.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -225,8 +248,24 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Web.config" />
+    <EntityDeploy Include="Models\RecipeDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RecipeDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\RecipeDB.edmx.diagram">
+      <DependentUpon>RecipeDB.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="Models\RecipeDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RecipeDB.edmx</DependentUpon>
+      <LastGenOutput>RecipeDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\RecipeDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RecipeDB.edmx</DependentUpon>
+      <LastGenOutput>RecipeDB.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
@@ -294,6 +333,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

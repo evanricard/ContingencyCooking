@@ -19,6 +19,7 @@ namespace ContingencyCooking.Models
         public string RecipeID { get; set; }
         public string Difficulty { get; set; }
         public Nullable<int> Rating { get; set; }
+        public string image { get; set; }
     
         public virtual Recipe Recipe { get; set; }
     }

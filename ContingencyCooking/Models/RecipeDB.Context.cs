@@ -25,7 +25,7 @@ namespace ContingencyCooking.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<RecipeAttempt> RecipeAttempts { get; set; }
         public virtual DbSet<Recipe> Recipes { get; set; }
+        public virtual DbSet<RecipeAttempt> RecipeAttempts { get; set; }
     }
 }

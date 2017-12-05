@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RecipeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RecipeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="RecipeAttempts">
           <Key>
             <PropertyRef Name="AttemptID" />
@@ -14,6 +14,7 @@
           <Property Name="RecipeID" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Difficulty" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="Rating" Type="int" />
+          <Property Name="image" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Recipes">
           <Key>
@@ -45,22 +46,10 @@
             <End Role="RecipeAttempts" EntitySet="RecipeAttempts" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RecipeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="RecipeAttempt">
-          <Key>
-            <PropertyRef Name="AttemptID" />
-          </Key>
-          <Property Name="AttemptID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="User_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="RecipeID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Difficulty" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Rating" Type="Int32" />
-          <NavigationProperty Name="Recipe" Relationship="Self.FK_RecipeAttempts_Recipes" FromRole="RecipeAttempts" ToRole="Recipes" />
-        </EntityType>
         <EntityType Name="Recipe">
           <Key>
             <PropertyRef Name="RecipeID" />
@@ -70,45 +59,46 @@
           <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Ingredients_Num" Type="Int32" />
-          <NavigationProperty Name="RecipeAttempts" Relationship="Self.FK_RecipeAttempts_Recipes" FromRole="Recipes" ToRole="RecipeAttempts" />
+          <NavigationProperty Name="RecipeAttempts" Relationship="RecipeDBModel.FK_RecipeAttempts_Recipes" FromRole="Recipe" ToRole="RecipeAttempt" />
+        </EntityType>
+        <EntityContainer Name="RecipeDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Recipes" EntityType="Self.Recipe" />
+          <EntitySet Name="RecipeAttempts" EntityType="RecipeDBModel.RecipeAttempt" />
+          <AssociationSet Name="FK_RecipeAttempts_Recipes" Association="RecipeDBModel.FK_RecipeAttempts_Recipes">
+            <End Role="Recipe" EntitySet="Recipes" />
+            <End Role="RecipeAttempt" EntitySet="RecipeAttempts" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="RecipeAttempt">
+          <Key>
+            <PropertyRef Name="AttemptID" />
+          </Key>
+          <Property Name="AttemptID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RecipeID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Difficulty" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Int32" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Recipe" Relationship="RecipeDBModel.FK_RecipeAttempts_Recipes" FromRole="RecipeAttempt" ToRole="Recipe" />
         </EntityType>
         <Association Name="FK_RecipeAttempts_Recipes">
-          <End Role="Recipes" Type="Self.Recipe" Multiplicity="1" />
-          <End Role="RecipeAttempts" Type="Self.RecipeAttempt" Multiplicity="*" />
+          <End Type="RecipeDBModel.Recipe" Role="Recipe" Multiplicity="1" />
+          <End Type="RecipeDBModel.RecipeAttempt" Role="RecipeAttempt" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Recipes">
+            <Principal Role="Recipe">
               <PropertyRef Name="RecipeID" />
             </Principal>
-            <Dependent Role="RecipeAttempts">
+            <Dependent Role="RecipeAttempt">
               <PropertyRef Name="RecipeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="RecipeDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="RecipeAttempts" EntityType="Self.RecipeAttempt" />
-          <EntitySet Name="Recipes" EntityType="Self.Recipe" />
-          <AssociationSet Name="FK_RecipeAttempts_Recipes" Association="Self.FK_RecipeAttempts_Recipes">
-            <End Role="Recipes" EntitySet="Recipes" />
-            <End Role="RecipeAttempts" EntitySet="RecipeAttempts" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="RecipeDBModelStoreContainer" CdmEntityContainer="RecipeDBEntities">
-          <EntitySetMapping Name="RecipeAttempts">
-            <EntityTypeMapping TypeName="RecipeDBModel.RecipeAttempt">
-              <MappingFragment StoreEntitySet="RecipeAttempts">
-                <ScalarProperty Name="AttemptID" ColumnName="AttemptID" />
-                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
-                <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
-                <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />
-                <ScalarProperty Name="Rating" ColumnName="Rating" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Recipes">
             <EntityTypeMapping TypeName="RecipeDBModel.Recipe">
               <MappingFragment StoreEntitySet="Recipes">
@@ -117,6 +107,18 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Ingredients_Num" ColumnName="Ingredients_Num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecipeAttempts">
+            <EntityTypeMapping TypeName="RecipeDBModel.RecipeAttempt">
+              <MappingFragment StoreEntitySet="RecipeAttempts">
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />
+                <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="AttemptID" ColumnName="AttemptID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a8ebcbe3151443149910fa2b6787d751" Name="Diagram1">
-        <EntityTypeShape EntityType="RecipeDBModel.RecipeAttempt" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="RecipeDBModel.Recipe" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="RecipeDBModel.FK_RecipeAttempts_Recipes" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RecipeDBModel.RecipeAttempt" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="RecipeDBModel.FK_RecipeAttempts_Recipes" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

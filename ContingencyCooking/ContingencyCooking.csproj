@@ -226,6 +226,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecipeDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\RecipeDB1.cs" />
+    <Compile Include="Models\RecipeDB1.Designer.cs">
+      <DependentUpon>RecipeDB1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

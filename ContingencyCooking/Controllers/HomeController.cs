@@ -8,6 +8,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
+using ContingencyCooking.Models;
 
 namespace ContingencyCooking.Controllers
 {
@@ -210,23 +211,13 @@ namespace ContingencyCooking.Controllers
 
         public ActionResult RateExperience()
         {
-
             return View();
         }
 
         //TODO: Rating
-        public ActionResult Rating(string rating)
+        public ActionResult SubmitRecipeAttempt(RecipeAttempt attempt)
         {
-            if (rating == "great")
-            {
-                return View("About");
-            }
-
-            else
-            {
-                return View("Contact");
-
-            }
+            return View();
         }
 
     }

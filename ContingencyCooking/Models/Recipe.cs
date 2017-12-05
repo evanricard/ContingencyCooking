@@ -11,7 +11,7 @@ namespace ContingencyCooking.Models
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Recipe
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,14 +19,13 @@ namespace ContingencyCooking.Models
         {
             this.RecipeAttempts = new HashSet<RecipeAttempt>();
         }
-
-
+    
         public string RecipeID { get; set; }
         public string Category { get; set; }
         public string Description { get; set; }
         public string Title { get; set; }
         public Nullable<int> Ingredients_Num { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RecipeAttempt> RecipeAttempts { get; set; }
     }

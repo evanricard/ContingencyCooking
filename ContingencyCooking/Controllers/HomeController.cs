@@ -21,15 +21,12 @@ namespace ContingencyCooking.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-            string apikey = ConfigurationManager.AppSettings["BigOven"];
+            //string apikey = ConfigurationManager.AppSettings["BigOven"];
             return View();
         }
         public ActionResult Search()
@@ -161,18 +158,17 @@ namespace ContingencyCooking.Controllers
             //Goes through instructions, then removes ingredients from instructions
             List<string> ingString = new List<string>();
 
-            ViewBag.jdata = JsonData["Ingredients"];
-
             foreach (var item in JsonData["Ingredients"])
             {
-                ingString.Add(item["Name"].ToString());
+                ingString.AddRange(item["Name"].ToString().Split(' '));
             }
 
             string instString = JsonData["Instructions"].ToString();
 
             for (int i = 0; i < ingString.Count; i++)
             {
-                instString = instString.Replace(ingString[i], "____");
+                //instString = instString.Replace(ingString[i], "____");
+                instString = Regex.Replace(instString, ingString[i], "____", RegexOptions.IgnoreCase);
             }
 
             ViewBag.finalInstructions = instString;

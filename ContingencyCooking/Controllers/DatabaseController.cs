@@ -29,16 +29,18 @@ namespace ContingencyCooking.Controllers
             ViewBag.RawJSON = data;
 
             JObject JsonData = JObject.Parse(data);
+            if (ORM.Recipes.Find(attempt.RecipeID)==null)
+            {
+                Recipe RecipeForDB = new Recipe();
 
-            Recipe RecipeForDB = new Recipe();
+                RecipeForDB.RecipeID = JsonData["RecipeID"].ToString();
+                RecipeForDB.Description = JsonData["Description"].ToString();
+                RecipeForDB.Ingredients_Num = JsonData["Ingredients"].ToList().Count;
+                RecipeForDB.Category = JsonData["Description"].ToString();
+                RecipeForDB.Title = JsonData["Title"].ToString();
 
-            RecipeForDB.RecipeID = JsonData["RecipeID"].ToString();
-            RecipeForDB.Description = JsonData["Description"].ToString();
-            RecipeForDB.Ingredients_Num = JsonData["Ingredients"].ToList().Count;
-            RecipeForDB.Category = JsonData["Description"].ToString();
-            RecipeForDB.Title = JsonData["Title"].ToString();
-
-            ORM.Recipes.Add(RecipeForDB);
+                ORM.Recipes.Add(RecipeForDB);
+            }
             ORM.RecipeAttempts.Add(attempt);
             ORM.SaveChanges();
 

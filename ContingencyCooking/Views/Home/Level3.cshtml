@@ -18,3 +18,9 @@ Cuisine: @ViewBag.Cuisine<br />
 </table>
 
 <h3>Y'all ready for this?</h3>
+
+<form action="/Home/RateExperience" method="post">
+    <input type="text" name="Difficulty" value="3" readonly hidden />
+    <input type="text" name="RecipeID" value="@ViewBag.RecipeID" readonly hidden />
+    <input type="submit" value="I am finished cooking!" /><br />
+</form>

@@ -209,15 +209,11 @@ namespace ContingencyCooking.Controllers
             return View("Level1");
         }
 
-        public ActionResult RateExperience()
+        public ActionResult RateExperience(string RecipeID, string Difficulty)
         {
-            return View();
-        }
-
-        //TODO: Rating
-        public ActionResult SubmitRecipeAttempt(RecipeAttempt attempt)
-        {
-            return View();
+            ViewBag.RecipeID = RecipeID;
+            ViewBag.Difficulty = Difficulty;
+            return View("RateExperience");
         }
 
     }

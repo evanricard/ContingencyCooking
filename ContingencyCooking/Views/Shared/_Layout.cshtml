@@ -28,7 +28,7 @@
                     <li>@Html.ActionLink("Profile Info", "Index", "Manage")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li><a href="/Database/DisplayUserAttempts?User_ID=@User.Identity.GetUserId()">Results</a></li>
-
+                    <li><a href="/Database/DisplayAllAttempts/">Compare Results</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

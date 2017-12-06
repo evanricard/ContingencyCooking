@@ -198,12 +198,14 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DatabaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeaderboardController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LeaderboardUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Recipe.cs">
       <DependentUpon>RecipeDB.tt</DependentUpon>
@@ -327,6 +329,7 @@
     <Content Include="Web.config" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\AllResults.cshtml" />
+    <Content Include="Views\Home\Leaderboard.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

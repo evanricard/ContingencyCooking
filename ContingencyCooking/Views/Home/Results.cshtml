@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Results";
+}
+@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.Owin;
+<h2>Results</h2>
+
+<table class="table">
+    <thead><tr><th>User</th><th>Title</th><th>Difficulty</th><th>Rating</th></tr></thead>
+    @foreach (var Attempt in ViewBag.Results)
+    {
+        <tr><td>@Attempt.User_ID</td><td>@Attempt.RecipeID</td><td>@Attempt.Difficulty</td><td>@Attempt.Rating</td></tr>
+    }
+</table>

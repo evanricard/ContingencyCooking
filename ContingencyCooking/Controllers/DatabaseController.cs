@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ContingencyCooking.Models;
+using Microsoft.AspNet.Identity;
 
 
 namespace ContingencyCooking.Controllers
@@ -29,14 +30,14 @@ namespace ContingencyCooking.Controllers
             ViewBag.RawJSON = data;
 
             JObject JsonData = JObject.Parse(data);
-            if (ORM.Recipes.Find(attempt.RecipeID)==null)
+            if (ORM.Recipes.Find(attempt.RecipeID) == null)
             {
                 Recipe RecipeForDB = new Recipe();
 
                 RecipeForDB.RecipeID = JsonData["RecipeID"].ToString();
                 RecipeForDB.Description = JsonData["Description"].ToString();
                 RecipeForDB.Ingredients_Num = JsonData["Ingredients"].ToList().Count;
-                RecipeForDB.Category = JsonData["Description"].ToString();
+                RecipeForDB.Category = JsonData["Cuisine"].ToString();
                 RecipeForDB.Title = JsonData["Title"].ToString();
 
                 ORM.Recipes.Add(RecipeForDB);
@@ -45,6 +46,16 @@ namespace ContingencyCooking.Controllers
             ORM.SaveChanges();
 
             return View("../Home/About");
+        }
+
+        public ActionResult DisplayUserAttempts()
+        {
+            RecipeDBEntities ORM = new RecipeDBEntities();
+
+            List<RecipeAttempt> UserList = ORM.RecipeAttempts.ToList();
+            ViewBag.Results = UserList;
+
+            return View("../Home/Results");
         }
 
     }

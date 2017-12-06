@@ -325,6 +325,7 @@
     <Content Include="Views\Home\Level2.cshtml" />
     <Content Include="Views\Home\Level1.cshtml" />
     <Content Include="Views\Home\RateExperience.cshtml" />
+    <Content Include="Views\Home\Results.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -54,11 +54,39 @@ namespace ContingencyCooking.Controllers
             RecipeDBEntities ORM = new RecipeDBEntities();
 
             List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
-            /*List<string> titles = new List<string>();
-            foreach (RecipeAttempt attempt in UserList)
-            {
-                titles.Add(attempt.Recipe.Title);
-            } */
+
+            ViewBag.Results = UserList;
+
+            return View("../Home/Results");
+        }
+
+        public ActionResult OrderByTitle(string User_ID)
+        {
+            RecipeDBEntities ORM = new RecipeDBEntities();
+
+            List<RecipeAttempt> UserList = ORM.RecipeAttempts.OrderBy(w => w.Recipe.Title).Where(x => x.User_ID == User_ID).ToList();
+
+            ViewBag.Results = UserList;
+
+            return View("../Home/Results");
+        }
+
+        public ActionResult OrderByDifficulty(string User_ID)
+        {
+            RecipeDBEntities ORM = new RecipeDBEntities();
+
+            List<RecipeAttempt> UserList = ORM.RecipeAttempts.OrderBy(w => w.Difficulty).Where(x => x.User_ID == User_ID).ToList();
+
+            ViewBag.Results = UserList;
+
+            return View("../Home/Results");
+        }
+
+        public ActionResult OrderByRating(string User_ID)
+        {
+            RecipeDBEntities ORM = new RecipeDBEntities();
+
+            List<RecipeAttempt> UserList = ORM.RecipeAttempts.OrderBy(w => w.Rating).Where(x => x.User_ID == User_ID).ToList();
 
             ViewBag.Results = UserList;
 
@@ -69,7 +97,7 @@ namespace ContingencyCooking.Controllers
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
             ApplicationDbContext UserORM = new ApplicationDbContext();
-           // ApplicationUser user1 = UserORM.Users.Find(/*---pk is needed-----*/);
+            // ApplicationUser user1 = UserORM.Users.Find(/*---pk is needed-----*/);
 
 
             List<RecipeAttempt> UserList = ORM.RecipeAttempts.ToList();

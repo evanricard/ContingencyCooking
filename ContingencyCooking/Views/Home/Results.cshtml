@@ -12,7 +12,6 @@
     <thead><tr><th><a href="/Database/OrderByTitle?User_ID=@User.Identity.GetUserId()">Title</a></th><th><a href="/Database/OrderByDifficulty?User_ID=@User.Identity.GetUserId()">Difficulty</a></th><th><a href="/Database/OrderByRating?User_ID=@User.Identity.GetUserId()">Rating</a></th></tr></thead>
     @foreach (var Attempt in ViewBag.Results)
     {
-        <tr><td>@Attempt.User_ID</td><td>@Attempt.Recipe.Title</td><td>@Attempt.Difficulty</td><td>@Attempt.Rating</td></tr>
         <tr><td>@Attempt.Recipe.Title</td><td>@Attempt.Difficulty</td><td>@Attempt.Rating</td></tr>
     }
 </table>

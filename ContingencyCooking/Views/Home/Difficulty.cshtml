@@ -3,8 +3,28 @@
     ViewBag.Title = "Difficulty";
 }
 
-<h2>Difficulty</h2>
 
-<a href="/Home/ChooseDifficulty1?RecipeID=@ViewBag.RecipeID">Level 1</a>
-<a href="/Home/ChooseDifficulty2?RecipeID=@ViewBag.RecipeID">Level 2</a>
-<a href="/Home/ChooseDifficulty3?RecipeID=@ViewBag.RecipeID">Level 3</a>
+@*<style>
+     body {
+        font-family: sans-serif;
+        text-align: center;
+        background: url('@ViewBag.Photo') no-repeat center center fixed; /*center center for horizontal and vertical placement, then stay in viewport*/
+        background-size: cover; /*background area is completely covered by the background image*/
+    }
+</style>*@
+<h2 class="text-center">Difficulty</h2>
+
+
+<div class="panel panel-default col-md-4">
+    <img src="~/Content/Images/easy.jpg" style="height:200px"/>
+    <p><a href="/Home/ChooseDifficulty1?RecipeID=@ViewBag.RecipeID">Level 1</a></p>
+</div>
+<div class="panel panel-warning col-md-4">
+    <img src="~/Content/Images/schmedium.png" style="height:200px"/>
+    <p><a href="/Home/ChooseDifficulty2?RecipeID=@ViewBag.RecipeID">Level 2</a></p>
+    @*<p style="bottom:50%"</p>*@
+</div>
+<div class="panel panel-danger col-md-4">
+    <img src="~/Content/Images/k.jpg" style="height:200px" />
+    <p><a href="/Home/ChooseDifficulty3?RecipeID=@ViewBag.RecipeID">Level 3</a></p>
+</div>

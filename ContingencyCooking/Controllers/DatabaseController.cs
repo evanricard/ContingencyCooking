@@ -55,8 +55,6 @@ namespace ContingencyCooking.Controllers
 
             List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
 
-<<<<<<< HEAD
-=======
             string username = User.Identity.GetUserName().ToString();
 
             username = username.Substring(0, username.IndexOf("@"));
@@ -68,30 +66,7 @@ namespace ContingencyCooking.Controllers
             return View("../Home/Results");
         }
 
-        public ActionResult OrderByTitle(string User_ID)
-        {
-            RecipeDBEntities ORM = new RecipeDBEntities();
 
-            List<RecipeAttempt> UserList = ORM.RecipeAttempts.OrderBy(w => w.Recipe.Title).Where(x => x.User_ID == User_ID).ToList();
-
-            ViewBag.Results = UserList;
-
-            return View("../Home/Results");
-        }
-
-        public ActionResult OrderByDifficulty(string User_ID)
-        {
-            RecipeDBEntities ORM = new RecipeDBEntities();
-
-            List<RecipeAttempt> UserList = ORM.RecipeAttempts.OrderBy(w => w.Difficulty).Where(x => x.User_ID == User_ID).ToList();
-
->>>>>>> 10aa3022266d6757f66d84556d2e2792f433e20f
-            ViewBag.Results = UserList;
-
-            return View("../Home/Results");
-        }
-
-<<<<<<< HEAD
         public ActionResult OrderByTitle(string User_ID)
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
@@ -114,8 +89,6 @@ namespace ContingencyCooking.Controllers
             return View("../Home/Results");
         }
 
-=======
->>>>>>> 10aa3022266d6757f66d84556d2e2792f433e20f
         public ActionResult OrderByRating(string User_ID)
         {
             RecipeDBEntities ORM = new RecipeDBEntities();

@@ -51,19 +51,26 @@ namespace ContingencyCooking.Controllers
 
         public ActionResult DisplayUserAttempts(string User_ID)
         {
-            RecipeDBEntities ORM = new RecipeDBEntities();
+            if (!string.IsNullOrEmpty(User_ID))
+            {
+                RecipeDBEntities ORM = new RecipeDBEntities();
 
-            List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
+                List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
 
-            string username = User.Identity.GetUserName().ToString();
+                string username = User.Identity.GetUserName().ToString();
 
-            username = username.Substring(0, username.IndexOf("@"));
+                username = username.Substring(0, username.IndexOf("@"));
 
-            ViewBag.Results = UserList;
+                ViewBag.Results = UserList;
 
-            ViewBag.Username = username;
+                ViewBag.Username = username;
 
-            return View("../Home/Results");
+                return View("../Home/UserProfile");
+            }
+
+            return View("../Home/Index");
+
+
         }
 
 

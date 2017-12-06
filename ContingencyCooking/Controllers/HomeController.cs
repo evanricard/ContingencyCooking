@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using ContingencyCooking.Models;
+using System.Text;
 
 namespace ContingencyCooking.Controllers
 {
@@ -165,15 +166,24 @@ namespace ContingencyCooking.Controllers
 
             string instString = JsonData["Instructions"].ToString();
 
+            StringBuilder sb = new StringBuilder(instString);
+
             for (int i = 0; i < ingString.Count; i++)
             {
+                if (!string.IsNullOrEmpty(ingString[i]))
+                {
+                    sb.Replace(ingString[i].ToLower(), "_____");
+
+                    sb.Replace(ingString[i][0].ToString().ToUpper() + ingString[i].Substring(1), "_____");
+
+                }
                 //instString = instString.Replace(ingString[i], "____");
-                instString = Regex.Replace(instString, ingString[i], "____", RegexOptions.IgnoreCase);
+                //Regex.Replace(sb.ToString(), ingString[i], "____", RegexOptions.IgnoreCase);
             }
 
             ViewBag.stingsomething = ingString;
 
-            ViewBag.finalInstructions = instString;
+            ViewBag.finalInstructions = sb.ToString();
 
             return View("Level2");
         }

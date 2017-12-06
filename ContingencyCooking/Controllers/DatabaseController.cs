@@ -75,7 +75,7 @@ namespace ContingencyCooking.Controllers
 
             ViewBag.Results = UserList;
 
-            return View("../Home/Results");
+            return View("../Home/UserProfile");
         }
 
         public ActionResult OrderByDifficulty(string User_ID)
@@ -86,7 +86,7 @@ namespace ContingencyCooking.Controllers
 
             ViewBag.Results = UserList;
 
-            return View("../Home/Results");
+            return View("../Home/UserProfile");
         }
 
         public ActionResult OrderByRating(string User_ID)
@@ -97,7 +97,7 @@ namespace ContingencyCooking.Controllers
 
             ViewBag.Results = UserList;
 
-            return View("../Home/Results");
+            return View("../Home/UserProfile");
         }
 
         public ActionResult DisplayAllAttempts()

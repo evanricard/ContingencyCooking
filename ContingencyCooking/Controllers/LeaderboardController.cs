@@ -30,8 +30,8 @@ namespace ContingencyCooking.Controllers
                 ApplicationUser tempUser = UserORM.Users.Find(UserID);
                 temp.UserName = tempUser.Email;
                 temp.TotalAttempts = ORM.RecipeAttempts.Where(x => x.User_ID == UserID).Count();
-                temp.AveDifficulty = ORM.RecipeAttempts.Where(x => x.User_ID == UserID).Select(x => x.Difficulty).Select(int.Parse).Average();
-                temp.AveIngredients = (double)ORM.RecipeAttempts.Where(x => x.User_ID == UserID).Select(x => x.Recipe.Ingredients_Num).Average();
+                temp.AveDifficulty = Math.Round(ORM.RecipeAttempts.Where(x => x.User_ID == UserID).Select(x => x.Difficulty).Select(int.Parse).Average(), 3);
+                temp.AveIngredients = Math.Round((double)ORM.RecipeAttempts.Where(x => x.User_ID == UserID).Select(x => x.Recipe.Ingredients_Num).Average(), 3);
 
                 LBlist.Add(temp);
             }

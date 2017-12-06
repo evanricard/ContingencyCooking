@@ -63,7 +63,7 @@ namespace ContingencyCooking.Controllers
 
             ViewBag.Username = username;
 
-            return View("../Home/Results");
+            return View("../Home/UserProfile");
         }
 
 

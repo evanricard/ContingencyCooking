@@ -48,11 +48,11 @@ namespace ContingencyCooking.Controllers
             return View("../Home/About");
         }
 
-        public ActionResult DisplayUserAttempts()
+        public ActionResult DisplayUserAttempts(string User_ID)
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
 
-            List<RecipeAttempt> UserList = ORM.RecipeAttempts.ToList();
+            List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x=>x.User_ID == User_ID).ToList();
             ViewBag.Results = UserList;
 
             return View("../Home/Results");

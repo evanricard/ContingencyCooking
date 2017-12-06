@@ -3,8 +3,19 @@
     ViewBag.Title = "Difficulty";
 }
 
-<h2>Difficulty</h2>
+<h2 class="text-center">Difficulty</h2>
 
-<a href="/Home/ChooseDifficulty1?RecipeID=@ViewBag.RecipeID">Level 1</a>
-<a href="/Home/ChooseDifficulty2?RecipeID=@ViewBag.RecipeID">Level 2</a>
-<a href="/Home/ChooseDifficulty3?RecipeID=@ViewBag.RecipeID">Level 3</a>
+
+<div class="panel panel-default col-md-4">
+    <img src="~/Content/Images/easy.jpg" style="height:200px"/>
+    <p><a href="/Home/ChooseDifficulty1?RecipeID=@ViewBag.RecipeID">Level 1</a></p>
+</div>
+<div class="panel panel-warning col-md-4">
+    <img src="~/Content/Images/schmedium.png" style="height:200px"/>
+    <p><a href="/Home/ChooseDifficulty2?RecipeID=@ViewBag.RecipeID">Level 2</a></p>
+    @*<p style="bottom:50%"</p>*@
+</div>
+<div class="panel panel-danger col-md-4">
+    <img src="~/Content/Images/k.jpg" style="height:200px" />
+    <p><a href="/Home/ChooseDifficulty3?RecipeID=@ViewBag.RecipeID">Level 3</a></p>
+</div>

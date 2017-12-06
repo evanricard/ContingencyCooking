@@ -10,6 +10,6 @@
     <thead><tr><th>User</th><th>Title</th><th>Difficulty</th><th>Rating</th></tr></thead>
     @foreach (var Attempt in ViewBag.Results)
     {
-        <tr><td>@Attempt.User_ID</td><td>@Attempt.RecipeID</td><td>@Attempt.Difficulty</td><td>@Attempt.Rating</td></tr>
+        <tr><td>@Attempt.User_ID</td><td>@Attempt.Recipe.Title</td><td>@Attempt.Difficulty</td><td>@Attempt.Rating</td></tr>
     }
 </table>

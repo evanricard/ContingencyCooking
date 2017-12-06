@@ -236,9 +236,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\david.jpg" />
     <Content Include="Content\Images\dummy-image.jpg" />
+    <Content Include="Content\Images\easy.jpg" />
     <Content Include="Content\Images\k.jpg" />
     <Content Include="Content\Images\Kevin.png" />
     <Content Include="Content\Images\pierce.png" />
+    <Content Include="Content\Images\schmedium.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

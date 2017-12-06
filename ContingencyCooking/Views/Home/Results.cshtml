@@ -5,11 +5,20 @@
 @using Microsoft.AspNet.Identity;
 @using Microsoft.AspNet.Identity.Owin;
 <h2>My Results</h2>
+<<<<<<< HEAD
+=======
+
+<h2>Username: @ViewBag.Username</h2>
+>>>>>>> 10aa3022266d6757f66d84556d2e2792f433e20f
 
 <table class="table">
     <thead><tr><th><a href="/Database/OrderByTitle?User_ID=@User.Identity.GetUserId()">Title</a></th><th><a href="/Database/OrderByDifficulty?User_ID=@User.Identity.GetUserId()">Difficulty</a></th><th><a href="/Database/OrderByRating?User_ID=@User.Identity.GetUserId()">Rating</a></th></tr></thead>
     @foreach (var Attempt in ViewBag.Results)
     {
+<<<<<<< HEAD
         <tr><td>@Attempt.User_ID</td><td>@Attempt.Recipe.Title</td><td>@Attempt.Difficulty</td><td>@Attempt.Rating</td></tr>
+=======
+        <tr><td>@Attempt.Recipe.Title</td><td>@Attempt.Difficulty</td><td>@Attempt.Rating</td></tr>
+>>>>>>> 10aa3022266d6757f66d84556d2e2792f433e20f
     }
 </table>

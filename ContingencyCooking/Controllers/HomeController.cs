@@ -171,6 +171,8 @@ namespace ContingencyCooking.Controllers
                 instString = Regex.Replace(instString, ingString[i], "____", RegexOptions.IgnoreCase);
             }
 
+            ViewBag.stingsomething = ingString;
+
             ViewBag.finalInstructions = instString;
 
             return View("Level2");

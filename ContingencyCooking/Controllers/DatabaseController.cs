@@ -36,7 +36,7 @@ namespace ContingencyCooking.Controllers
                 RecipeForDB.RecipeID = JsonData["RecipeID"].ToString();
                 RecipeForDB.Description = JsonData["Description"].ToString();
                 RecipeForDB.Ingredients_Num = JsonData["Ingredients"].ToList().Count;
-                RecipeForDB.Category = JsonData["Description"].ToString();
+                RecipeForDB.Category = JsonData["Cuisine"].ToString();
                 RecipeForDB.Title = JsonData["Title"].ToString();
 
                 ORM.Recipes.Add(RecipeForDB);

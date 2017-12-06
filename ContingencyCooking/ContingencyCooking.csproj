@@ -314,8 +314,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Web.config" />
-    <Content Include="Views\Web.config" />
     <Content Include="Views\Home\GetLasagna.cshtml" />
     <Content Include="Views\Home\SearchRecipes.cshtml" />
     <Content Include="Views\Home\DisplayRecipes.cshtml" />
@@ -325,6 +323,8 @@
     <Content Include="Views\Home\Level2.cshtml" />
     <Content Include="Views\Home\Level1.cshtml" />
     <Content Include="Views\Home\RateExperience.cshtml" />
+    <Content Include="Web.config" />
+    <Content Include="Views\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

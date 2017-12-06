@@ -55,7 +55,13 @@ namespace ContingencyCooking.Controllers
 
             List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
 
+            string username = User.Identity.GetUserName().ToString();
+
+            username = username.Substring(0, username.IndexOf("@"));
+
             ViewBag.Results = UserList;
+
+            ViewBag.Username = username;
 
             return View("../Home/Results");
         }

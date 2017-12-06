@@ -6,8 +6,9 @@
 @using Microsoft.AspNet.Identity.Owin;
 <h2>My Results</h2>
 
+<h2>Username: @ViewBag.Username</h2>
+
 <table class="table">
-    <thead><tr><th>Title</th><th>Difficulty</th><th>Rating</th></tr></thead>
     <thead><tr><th><a href="/Database/OrderByTitle?User_ID=@User.Identity.GetUserId()">Title</a></th><th><a href="/Database/OrderByDifficulty?User_ID=@User.Identity.GetUserId()">Difficulty</a></th><th><a href="/Database/OrderByRating?User_ID=@User.Identity.GetUserId()">Rating</a></th></tr></thead>
     @foreach (var Attempt in ViewBag.Results)
     {

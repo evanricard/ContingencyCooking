@@ -221,8 +221,10 @@ namespace ContingencyCooking.Controllers
         {
             ViewBag.RecipeID = RecipeID;
             ViewBag.Difficulty = Difficulty;
-            return View("RateExperience");
+            return View("AttemptUpload");
         }
+
+
 
     }
 

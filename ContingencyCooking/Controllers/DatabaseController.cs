@@ -20,8 +20,6 @@ namespace ContingencyCooking.Controllers
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
 
-            ContingencyCookingDAL DAL = new ContingencyCookingDAL();
-
             if (ORM.Recipes.Find(attempt.RecipeID) == null)
             {
                 JObject JsonData = (JObject)Session["Recipe"];

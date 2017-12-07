@@ -164,7 +164,20 @@ namespace ContingencyCooking.Controllers
             return View("AttemptUpload");
         }
 
+        public ActionResult ViewRecipe(string RecipeID)
+        {
+            ContingencyCookingDAL DAL = new ContingencyCookingDAL();
 
+            JObject JsonData = DAL.GetRecipeByID(RecipeID);
+
+            ViewBag.RecipeID = JsonData["RecipeID"];
+            ViewBag.Cuisine = JsonData["Cuisine"];
+            ViewBag.Ingredients = JsonData["Ingredients"]; //In view add .(whatever) to pull info and throw into for loop
+            ViewBag.Instructions = JsonData["Instructions"];
+            ViewBag.Photo = JsonData["PhotoUrl"];
+
+            return View("SeeFullRecipe");
+        }
 
     }
 

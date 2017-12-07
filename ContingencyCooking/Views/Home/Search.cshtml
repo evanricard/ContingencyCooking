@@ -3,9 +3,10 @@
     ViewBag.Title = "Search";
 }
 
-<h2>Search</h2>
-
-<form action="/Home/SearchRecipes" method="get">
-    Search for a Recipe: <input type="text" name="input" /><br />
-    <input type="submit" value="search" />
-</form>
+<h2>Search for a recipe!</h2>
+<div class="jumbotron">
+    <form action="/Home/SearchRecipes" method="get">
+        <label form="searchbox" style="align-content:center">Enter a Recipe or Keyword: </label><input class="form-control" type="text" name="input" /><br />
+        <input class="btn btn-primary" type="submit" value="Search" id="searchbox" style="width: 100%">
+    </form>
+</div>

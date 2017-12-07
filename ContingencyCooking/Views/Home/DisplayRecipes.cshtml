@@ -3,11 +3,14 @@
     ViewBag.Title = "DisplayRecipes";
 }
 
-<h2>DisplayRecipes</h2>
-
+<h2>Recipes!</h2>
+<table class="table">
+    <thead><tr><th>Recipe Title</th><th></th></tr></thead>
 @foreach (var item in ViewBag.Results)
 {
-    <a href="/Home/SearchById?RecipeID=@item.RecipeID">@item.Title</a>; 
-    <img src="@item.PhotoUrl" style="height: 150px"/>
-    <br />
+    <tr>
+        <td><h3>@item.Title</h3><br /><a href="/Home/SearchById?RecipeID=@item.RecipeID">Try this recipe?</a></td>
+        <td><img src="@item.PhotoUrl" style="height: 150px" /></td>
+    </tr>
 }
+</table>

@@ -15,7 +15,7 @@
                     <thead><tr><th><a href="/Database/OrderByTitle?User_ID=@User.Identity.GetUserId()">Title</a></th><th><a href="/Database/OrderByDifficulty?User_ID=@User.Identity.GetUserId()">Difficulty</a></th><th><a href="/Database/OrderByRating?User_ID=@User.Identity.GetUserId()">Rating</a></th><th>Image</th></tr></thead>
                     @foreach (var Attempt in ViewBag.Results)
                     {
-                        <tr><td class="col-md-2">@Attempt.Recipe.Title</td><td class="col-md-2">@Attempt.Difficulty</td><td class="col-md-2">@Attempt.Rating</td><td class="col-md-6"><img src="@Attempt.image" style="width: 50%" /></td></tr>
+                        <tr><td class="col-md-2">@Attempt.Recipe.Title: <br /><a href="/Home/ViewRecipe?RecipeID=@Attempt.RecipeID">Full recipe?</a></td><td class="col-md-2">@Attempt.Difficulty</td><td class="col-md-2">@Attempt.Rating</td><td class="col-md-6"><img src="@Attempt.image" style="width: 50%" /></td></tr>
                     }
                 </table>
             </div>

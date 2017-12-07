@@ -323,7 +323,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\GetLasagna.cshtml" />
     <Content Include="Views\Home\SearchRecipes.cshtml" />
     <Content Include="Views\Home\DisplayRecipes.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />

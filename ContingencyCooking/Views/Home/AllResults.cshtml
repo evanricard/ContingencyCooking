@@ -10,31 +10,31 @@
 
 
 <form action="/Database/SearchAllAttempts" method="get">
-    <input type="text" name="InputTitle" />
-    <input type="submit" value="Seach by Title" />
+    <input class="form-control" type="text" name="InputTitle" />
+    <input class="btn btn-primary" type="submit" value="Search by Title">
 </form>
-
+<br />
 <form action="/Database/SearchAllAttempts" method="get">
-    <select name="InputDifficulty">
+    <select class="form-control" name="InputDifficulty">
         @foreach (var Difficulty in ViewBag.ListDifficulty)
         {
             <option value="@Difficulty">@Difficulty</option>
         }
     </select>
-    <input type="submit" value="Select Difficulty" />
+    <input class="btn btn-primary" type="submit" value="Select Difficulty">
 </form>
-
+<br />
 <form action="/Database/SearchAllAttempts" method="get">
-    <select name="InputRating">
+    <select class="form-control" name="InputRating">
         @foreach (var Rating in ViewBag.ListRating)
         {
             <option value="@Rating">@Rating</option>
         }
     </select>
-    <input type="submit" value="Select Rating" />
+    <input class="btn btn-primary" type="submit" value="Select Rating">
 </form>
 
-
+<br />
 <table class="table">
     <thead><tr><th>Title</th><th>Username</th><th>Difficulty</th><th>Rating</th></tr></thead>
     @for (int i = 0; i < ViewBag.Results.Count; i++)

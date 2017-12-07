@@ -50,7 +50,6 @@ namespace ContingencyCooking.Controllers
 
         public ActionResult SearchById(string RecipeID)
         {
-
             ViewBag.RecipeID = RecipeID;
 
             return View("Difficulty");
@@ -61,6 +60,15 @@ namespace ContingencyCooking.Controllers
             ContingencyCookingDAL DAL = new ContingencyCookingDAL();
 
             JObject JsonData = DAL.GetRecipeByID(RecipeID);
+
+            if (Session["Recipe"] == null)
+            {
+                Session.Add("Recipe", JsonData);
+            }
+            else
+            {
+                Session["Recipe"] = JsonData;
+            }
 
             ViewBag.RecipeID = JsonData["RecipeID"];
             ViewBag.Cuisine = JsonData["Cuisine"];
@@ -77,6 +85,15 @@ namespace ContingencyCooking.Controllers
             ContingencyCookingDAL DAL = new ContingencyCookingDAL();
 
             JObject JsonData = DAL.GetRecipeByID(RecipeID);
+
+            if (Session["Recipe"] == null)
+            {
+                Session.Add("Recipe", JsonData);
+            }
+            else
+            {
+                Session["Recipe"] = JsonData;
+            }
 
             ViewBag.RecipeID = JsonData["RecipeID"];
             ViewBag.Cuisine = JsonData["Cuisine"];
@@ -121,6 +138,15 @@ namespace ContingencyCooking.Controllers
             ContingencyCookingDAL DAL = new ContingencyCookingDAL();
 
             JObject JsonData = DAL.GetRecipeByID(RecipeID);
+
+            if (Session["Recipe"] == null)
+            {
+                Session.Add("Recipe", JsonData);
+            }
+            else
+            {
+                Session["Recipe"] = JsonData;
+            }
 
             ViewBag.RecipeID = JsonData["RecipeID"];
             ViewBag.Cuisine = JsonData["Cuisine"];

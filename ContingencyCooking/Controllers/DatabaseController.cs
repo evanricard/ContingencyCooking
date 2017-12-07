@@ -24,7 +24,8 @@ namespace ContingencyCooking.Controllers
 
             if (ORM.Recipes.Find(attempt.RecipeID) == null)
             {
-                JObject JsonData = DAL.GetRecipeByID(attempt.RecipeID);
+                JObject JsonData = (JObject)Session["Recipe"];
+
                 Recipe RecipeForDB = new Recipe();
 
                 RecipeForDB.RecipeID = JsonData["RecipeID"].ToString();
@@ -38,7 +39,8 @@ namespace ContingencyCooking.Controllers
             ORM.RecipeAttempts.Add(attempt);
             ORM.SaveChanges();
 
-            return View("../Home/About");
+            Session["Recipe"] = null;
+            return View("../Home/UserProfile");
         }
 
         [Authorize]

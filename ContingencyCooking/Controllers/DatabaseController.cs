@@ -36,7 +36,7 @@ namespace ContingencyCooking.Controllers
                 Recipe RecipeForDB = new Recipe();
 
                 RecipeForDB.RecipeID = JsonData["RecipeID"].ToString();
-                RecipeForDB.Description = JsonData["Description"].ToString();
+                // RecipeForDB.Description = JsonData["Description"].ToString();
                 RecipeForDB.Ingredients_Num = JsonData["Ingredients"].ToList().Count;
                 RecipeForDB.Category = JsonData["Cuisine"].ToString();
                 RecipeForDB.Title = JsonData["Title"].ToString();
@@ -62,7 +62,7 @@ namespace ContingencyCooking.Controllers
                 username = username.Substring(0, username.IndexOf("@"));
 
                 ViewBag.Results = UserList;
-
+                ViewBag.Images = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).Select(x => x.image).ToList();
                 ViewBag.Username = username;
 
                 return View("../Home/UserProfile");

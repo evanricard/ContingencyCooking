@@ -46,7 +46,6 @@ namespace ContingencyCooking.Controllers
         [Authorize]
         public ActionResult DisplayUserAttempts(string User_ID)
         {
-
             RecipeDBEntities ORM = new RecipeDBEntities();
 
             List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
@@ -60,7 +59,6 @@ namespace ContingencyCooking.Controllers
             ViewBag.Username = username;
 
             return View("../Home/UserProfile");
-
         }
 
 
@@ -121,59 +119,26 @@ namespace ContingencyCooking.Controllers
             return View("../Home/AllResults");
         }
 
-        public ActionResult SearchByAllAttemptsTitle(string InputTitle)
+        public ActionResult SearchAllAttempts(string InputTitle, string InputDifficulty, string InputRating)
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
             ContingencyCookingDAL DAL = new ContingencyCookingDAL();
+            List<RecipeAttempt> UserList = new List<RecipeAttempt>();
 
-            List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x => x.Recipe.Title.ToLower().Contains(InputTitle.ToLower())).ToList();
-
-            List<string> UserEmails = DAL.GetUserEmailsFromAttempts(UserList);
-
-            ViewBag.Emails = UserEmails;
-            ViewBag.Results = UserList;
-            ViewBag.ListDifficulty = ORM.RecipeAttempts.Select(y => y.Difficulty).Distinct().ToList();
-            ViewBag.ListRating = ORM.RecipeAttempts.Select(y => y.Rating).Distinct().ToList();
-
-            return View("../Home/AllResults");
-        }
-
-        //public ActionResult SearchByAllAttemptsUser()
-        //{
-        //    RecipeDBEntities ORM = new RecipeDBEntities();
-        //}
-
-        public ActionResult SearchByAllAttemptsDifficulty(string InputDifficulty)
-        {
-            RecipeDBEntities ORM = new RecipeDBEntities();
-            ContingencyCookingDAL DAL = new ContingencyCookingDAL();
-
-            List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x => x.Difficulty.Contains(InputDifficulty)).ToList();
-
-            List<string> UserEmails = DAL.GetUserEmailsFromAttempts(UserList);
-
-            ViewBag.Emails = UserEmails;
-            ViewBag.Results = UserList;
-            ViewBag.ListDifficulty = ORM.RecipeAttempts.Select(y => y.Difficulty).Distinct().ToList();
-            ViewBag.ListRating = ORM.RecipeAttempts.Select(y => y.Rating).Distinct().ToList();
-
-            return View("../Home/AllResults");
-        }
-
-        public ActionResult SearchByAllAttemptsRating(string InputRating)
-        {
-            RecipeDBEntities ORM = new RecipeDBEntities();
-
-            ApplicationDbContext UserORM = new ApplicationDbContext();
-
-            List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x => x.Rating.ToString().Contains(InputRating)).ToList();
-
-            List<string> UserEmails = new List<string>();
-            foreach (RecipeAttempt attempt in UserList)
+            if (InputTitle != null && InputDifficulty == null && InputRating == null)
             {
-                ApplicationUser tempUser = UserORM.Users.Find(attempt.User_ID);
-                UserEmails.Add(tempUser.Email);
+               UserList = (ORM.RecipeAttempts.Where(x => x.Recipe.Title.ToLower().Contains(InputTitle.ToLower())).ToList());
             }
+            else if (InputTitle == null && InputDifficulty != null && InputRating == null)
+            {
+                UserList = ORM.RecipeAttempts.Where(x => x.Difficulty.Contains(InputDifficulty)).ToList();
+            }
+            else if (InputTitle == null && InputDifficulty == null && InputRating != null)
+            {
+                UserList = ORM.RecipeAttempts.Where(x => x.Rating.ToString().Contains(InputRating)).ToList();
+            }
+
+            List<string> UserEmails = DAL.GetUserEmailsFromAttempts(UserList);
 
             ViewBag.Emails = UserEmails;
             ViewBag.Results = UserList;

@@ -9,12 +9,12 @@
 <h2>All Results</h2>
 
 
-<form action="/Database/SearchByAllAttemptsTitle" method="get">
+<form action="/Database/SearchAllAttempts" method="get">
     <input type="text" name="InputTitle" />
     <input type="submit" value="Seach by Title" />
 </form>
 
-<form action="/Database/SearchByAllAttemptsDifficulty" method="get">
+<form action="/Database/SearchAllAttempts" method="get">
     <select name="InputDifficulty">
         @foreach (var Difficulty in ViewBag.ListDifficulty)
         {
@@ -24,7 +24,7 @@
     <input type="submit" value="Select Difficulty" />
 </form>
 
-<form action="/Database/SearchByAllAttemptsRating" method="get">
+<form action="/Database/SearchAllAttempts" method="get">
     <select name="InputRating">
         @foreach (var Rating in ViewBag.ListRating)
         {

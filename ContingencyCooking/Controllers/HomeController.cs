@@ -70,6 +70,7 @@ namespace ContingencyCooking.Controllers
                 Session["Recipe"] = JsonData;
             }
 
+            ViewBag.RecipeName = JsonData["Title"];
             ViewBag.RecipeID = JsonData["RecipeID"];
             ViewBag.Cuisine = JsonData["Cuisine"];
             ViewBag.Ingredients = JsonData["Ingredients"]; //In view add .(whatever) to pull info and throw into for loop
@@ -95,6 +96,7 @@ namespace ContingencyCooking.Controllers
                 Session["Recipe"] = JsonData;
             }
 
+            ViewBag.RecipeName = JsonData["Title"];
             ViewBag.RecipeID = JsonData["RecipeID"];
             ViewBag.Cuisine = JsonData["Cuisine"];
             ViewBag.Ingredients = JsonData["Ingredients"]; //In view add .(whatever) to pull info and throw into for loop
@@ -148,6 +150,7 @@ namespace ContingencyCooking.Controllers
                 Session["Recipe"] = JsonData;
             }
 
+            ViewBag.RecipeName = JsonData["Title"];
             ViewBag.RecipeID = JsonData["RecipeID"];
             ViewBag.Cuisine = JsonData["Cuisine"];
             ViewBag.Ingredients = JsonData["Ingredients"]; //In view add .(whatever) to pull info and throw into for loop
@@ -170,6 +173,7 @@ namespace ContingencyCooking.Controllers
 
             JObject JsonData = DAL.GetRecipeByID(RecipeID);
 
+            ViewBag.RecipeName = JsonData["Title"];
             ViewBag.RecipeID = JsonData["RecipeID"];
             ViewBag.Cuisine = JsonData["Cuisine"];
             ViewBag.Ingredients = JsonData["Ingredients"]; //In view add .(whatever) to pull info and throw into for loop

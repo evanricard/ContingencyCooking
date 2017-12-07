@@ -38,7 +38,7 @@ namespace ContingencyCooking.Controllers
             ORM.SaveChanges();
 
             Session["Recipe"] = null;
-            return View("../Home/UserProfile");
+            return RedirectToAction("DisplayUserAttempts", new { User_ID = attempt.User_ID });
         }
 
         [Authorize]

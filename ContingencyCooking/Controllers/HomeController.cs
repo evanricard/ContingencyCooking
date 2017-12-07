@@ -30,62 +30,18 @@ namespace ContingencyCooking.Controllers
             //string apikey = ConfigurationManager.AppSettings["BigOven"];
             return View();
         }
+
+        [Authorize]
         public ActionResult Search()
         {
             return View();
         }
 
-        //TODO: Rename
-        public ActionResult GetLasagna()
-        {
-            string apiKey = ConfigurationManager.AppSettings["BigOven"];
-
-            HttpWebRequest WR = WebRequest.CreateHttp("http://api2.bigoven.com/recipe/1115910?api_key=" + apiKey);
-
-            WR.Accept = "application/json";
-
-            WR.UserAgent = ".Net Framework Test Client";
-
-            HttpWebResponse Response = (HttpWebResponse)WR.GetResponse();
-
-            StreamReader Reader = new StreamReader(Response.GetResponseStream());
-
-            string data = Reader.ReadToEnd();
-
-            ViewBag.RawJSON = data;
-
-            JObject JsonData = JObject.Parse(data);
-
-            //Data is pulled like this:
-            //
-
-            ViewBag.RecipeID = JsonData["RecipeID"];
-            ViewBag.Cuisine = JsonData["Cuisine"];
-            ViewBag.Ingredients = JsonData["Ingredients"]; //In view add .(whatever) to pull info and throw into for loop
-            ViewBag.Instructions = JsonData["Instructions"];
-
-            return View();
-        }
-
         public ActionResult SearchRecipes(string input)
         {
-            string apiKey = ConfigurationManager.AppSettings["BigOven"];
+            ContingencyCookingDAL DAL = new ContingencyCookingDAL();
 
-            HttpWebRequest WR = WebRequest.CreateHttp("https://api2.bigoven.com/recipes?any_kw=" + input + "&isbookmark=0&api_key=" + apiKey);
-
-            WR.Accept = "application/json";
-
-            WR.UserAgent = ".Net Framework Test Client";
-
-            HttpWebResponse Response = (HttpWebResponse)WR.GetResponse();
-
-            StreamReader Reader = new StreamReader(Response.GetResponseStream());
-
-            string data = Reader.ReadToEnd();
-
-            ViewBag.Data = data;
-
-            JObject JsonData = JObject.Parse(data);
+            JObject JsonData = DAL.SearchByInput(input);
 
             ViewBag.Results = JsonData["Results"];
 
@@ -102,23 +58,9 @@ namespace ContingencyCooking.Controllers
 
         public ActionResult ChooseDifficulty3(string RecipeID)
         {
-            string apiKey = ConfigurationManager.AppSettings["BigOven"];
+            ContingencyCookingDAL DAL = new ContingencyCookingDAL();
 
-            HttpWebRequest WR = WebRequest.CreateHttp("http://api2.bigoven.com/recipe/" + RecipeID + "?api_key=" + apiKey);
-
-            WR.Accept = "application/json";
-
-            WR.UserAgent = ".Net Framework Test Client";
-
-            HttpWebResponse Response = (HttpWebResponse)WR.GetResponse();
-
-            StreamReader Reader = new StreamReader(Response.GetResponseStream());
-
-            string data = Reader.ReadToEnd();
-
-            ViewBag.RawJSON = data;
-
-            JObject JsonData = JObject.Parse(data);
+            JObject JsonData = DAL.GetRecipeByID(RecipeID);
 
             ViewBag.RecipeID = JsonData["RecipeID"];
             ViewBag.Cuisine = JsonData["Cuisine"];
@@ -132,23 +74,9 @@ namespace ContingencyCooking.Controllers
 
         public ActionResult ChooseDifficulty2(string RecipeID)
         {
-            string apiKey = ConfigurationManager.AppSettings["BigOven"];
+            ContingencyCookingDAL DAL = new ContingencyCookingDAL();
 
-            HttpWebRequest WR = WebRequest.CreateHttp("http://api2.bigoven.com/recipe/" + RecipeID + "?api_key=" + apiKey);
-
-            WR.Accept = "application/json";
-
-            WR.UserAgent = ".Net Framework Test Client";
-
-            HttpWebResponse Response = (HttpWebResponse)WR.GetResponse();
-
-            StreamReader Reader = new StreamReader(Response.GetResponseStream());
-
-            string data = Reader.ReadToEnd();
-
-            ViewBag.RawJSON = data;
-
-            JObject JsonData = JObject.Parse(data);
+            JObject JsonData = DAL.GetRecipeByID(RecipeID);
 
             ViewBag.RecipeID = JsonData["RecipeID"];
             ViewBag.Cuisine = JsonData["Cuisine"];
@@ -190,23 +118,9 @@ namespace ContingencyCooking.Controllers
 
         public ActionResult ChooseDifficulty1(string RecipeID)
         {
-            string apiKey = ConfigurationManager.AppSettings["BigOven"];
+            ContingencyCookingDAL DAL = new ContingencyCookingDAL();
 
-            HttpWebRequest WR = WebRequest.CreateHttp("http://api2.bigoven.com/recipe/" + RecipeID + "?api_key=" + apiKey);
-
-            WR.Accept = "application/json";
-
-            WR.UserAgent = ".Net Framework Test Client";
-
-            HttpWebResponse Response = (HttpWebResponse)WR.GetResponse();
-
-            StreamReader Reader = new StreamReader(Response.GetResponseStream());
-
-            string data = Reader.ReadToEnd();
-
-            ViewBag.RawJSON = data;
-
-            JObject JsonData = JObject.Parse(data);
+            JObject JsonData = DAL.GetRecipeByID(RecipeID);
 
             ViewBag.RecipeID = JsonData["RecipeID"];
             ViewBag.Cuisine = JsonData["Cuisine"];

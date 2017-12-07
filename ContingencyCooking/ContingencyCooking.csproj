@@ -199,6 +199,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContingencyCookingDAL.cs" />
     <Compile Include="Controllers\CloudinaryController.cs" />
     <Compile Include="Controllers\DatabaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

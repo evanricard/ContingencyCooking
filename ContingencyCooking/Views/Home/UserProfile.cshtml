@@ -8,9 +8,9 @@
 @using Microsoft.AspNet.Identity.Owin;
 <div class="container">
     <div class="row">
-        <div class="col-md-2"><h2>User Profile: @ViewBag.Username</h2><img src="~/Content/Images/dummy-image.jpg" style="height:200px; padding:5px" /></div>
+        <div class="col-md-2"><h4 style="text-align: center">Profile: @ViewBag.Username</h4><img src="~/Content/Images/dummy-image.jpg" style="height:200px; padding:5px" /></div>
             <div class="col-md-10">
-                <h2>My Results</h2>
+                <h2>Your Contingency Creations!</h2>
                 <table class="table">
                     <thead><tr><th><a href="/Database/OrderByTitle?User_ID=@User.Identity.GetUserId()">Title</a></th><th><a href="/Database/OrderByDifficulty?User_ID=@User.Identity.GetUserId()">Difficulty</a></th><th><a href="/Database/OrderByRating?User_ID=@User.Identity.GetUserId()">Rating</a></th><th>Image</th></tr></thead>
                     @foreach (var Attempt in ViewBag.Results)

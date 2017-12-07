@@ -20,19 +20,11 @@ namespace ContingencyCooking.Controllers
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
 
-            string apiKey = ConfigurationManager.AppSettings["BigOven"];
-            HttpWebRequest WR = WebRequest.CreateHttp("http://api2.bigoven.com/recipe/" + attempt.RecipeID + "?api_key=" + apiKey);
-            WR.Accept = "application/json";
-            WR.UserAgent = ".Net Framework Test Client";
-            HttpWebResponse Response = (HttpWebResponse)WR.GetResponse();
-            StreamReader Reader = new StreamReader(Response.GetResponseStream());
-            string data = Reader.ReadToEnd();
+            ContingencyCookingDAL DAL = new ContingencyCookingDAL();
 
-            ViewBag.RawJSON = data;
-
-            JObject JsonData = JObject.Parse(data);
             if (ORM.Recipes.Find(attempt.RecipeID) == null)
             {
+                JObject JsonData = DAL.GetRecipeByID(attempt.RecipeID);
                 Recipe RecipeForDB = new Recipe();
 
                 RecipeForDB.RecipeID = JsonData["RecipeID"].ToString();
@@ -49,27 +41,23 @@ namespace ContingencyCooking.Controllers
             return View("../Home/About");
         }
 
+        [Authorize]
         public ActionResult DisplayUserAttempts(string User_ID)
         {
-            if (!string.IsNullOrEmpty(User_ID))
-            {
-                RecipeDBEntities ORM = new RecipeDBEntities();
 
-                List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
+            RecipeDBEntities ORM = new RecipeDBEntities();
 
-                string username = User.Identity.GetUserName().ToString();
+            List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
 
-                username = username.Substring(0, username.IndexOf("@"));
+            string username = User.Identity.GetUserName().ToString();
 
-                ViewBag.Results = UserList;
-                ViewBag.Images = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).Select(x => x.image).ToList();
-                ViewBag.Username = username;
+            username = username.Substring(0, username.IndexOf("@"));
 
-                return View("../Home/UserProfile");
-            }
+            ViewBag.Results = UserList;
 
-            return View("../Home/Index");
+            ViewBag.Username = username;
 
+            return View("../Home/UserProfile");
 
         }
 
@@ -110,7 +98,7 @@ namespace ContingencyCooking.Controllers
         public ActionResult DisplayAllAttempts()
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
-            ApplicationDbContext UserORM = new ApplicationDbContext();
+            ContingencyCookingDAL DAL = new ContingencyCookingDAL();
             // ApplicationUser user1 = UserORM.Users.Find(/*---pk is needed-----*/);
 
 
@@ -121,12 +109,7 @@ namespace ContingencyCooking.Controllers
                 titles.Add(attempt.Recipe.Title);
             } */
 
-            List<string> UserEmails = new List<string>();
-            foreach (RecipeAttempt attempt in UserList)
-            {
-                ApplicationUser tempUser = UserORM.Users.Find(attempt.User_ID);
-                UserEmails.Add(tempUser.Email);
-            }
+            List<string> UserEmails = DAL.GetUserEmailsFromAttempts(UserList);
 
             ViewBag.Emails = UserEmails;
             ViewBag.Results = UserList;
@@ -139,16 +122,11 @@ namespace ContingencyCooking.Controllers
         public ActionResult SearchByAllAttemptsTitle(string InputTitle)
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
-            ApplicationDbContext UserORM = new ApplicationDbContext();
+            ContingencyCookingDAL DAL = new ContingencyCookingDAL();
 
             List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x => x.Recipe.Title.ToLower().Contains(InputTitle.ToLower())).ToList();
 
-            List<string> UserEmails = new List<string>();
-            foreach (RecipeAttempt attempt in UserList)
-            {
-                ApplicationUser tempUser = UserORM.Users.Find(attempt.User_ID);
-                UserEmails.Add(tempUser.Email);
-            }
+            List<string> UserEmails = DAL.GetUserEmailsFromAttempts(UserList);
 
             ViewBag.Emails = UserEmails;
             ViewBag.Results = UserList;
@@ -166,17 +144,11 @@ namespace ContingencyCooking.Controllers
         public ActionResult SearchByAllAttemptsDifficulty(string InputDifficulty)
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
-            
-            ApplicationDbContext UserORM = new ApplicationDbContext();
+            ContingencyCookingDAL DAL = new ContingencyCookingDAL();
 
             List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x => x.Difficulty.Contains(InputDifficulty)).ToList();
 
-            List<string> UserEmails = new List<string>();
-            foreach (RecipeAttempt attempt in UserList)
-            {
-                ApplicationUser tempUser = UserORM.Users.Find(attempt.User_ID);
-                UserEmails.Add(tempUser.Email);
-            }
+            List<string> UserEmails = DAL.GetUserEmailsFromAttempts(UserList);
 
             ViewBag.Emails = UserEmails;
             ViewBag.Results = UserList;

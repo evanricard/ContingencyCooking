@@ -48,9 +48,10 @@ namespace ContingencyCooking.Controllers
         }
 
         [Authorize]
-        public ActionResult DisplayUserAttempts(string User_ID)
+        public ActionResult DisplayUserAttempts()
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
+            var User_ID = User.Identity.GetUserId();
 
             List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
 

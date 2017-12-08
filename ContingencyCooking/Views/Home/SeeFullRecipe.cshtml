@@ -42,8 +42,6 @@
     }
 
     .border {
-        border-left: 2px solid rgba(255, 255, 255, 1);
-        border-right: 2px solid rgba(255, 255, 255, 1);
         width: 80%;
         height: auto;
     }
@@ -76,10 +74,31 @@
 
     #instructions{
         color: white;
+        padding-left: 5%;
+        padding-right: 5%;
     }
 
     h2{
         color: white;
+    }
+</style>
+
+<style>
+    table{
+        table-layout:fixed;
+    }
+
+    th{
+        font-size: 20px;
+
+    }
+
+    tr th {
+        text-align: center;
+    }
+
+    ::-webkit-scrollbar {
+        width: 0px;
     }
 </style>
 
@@ -97,7 +116,7 @@
             RecipeID: @ViewBag.RecipeName<br />
             Cuisine: @ViewBag.Cuisine<br />
             <table class="table">
-                <tr><th>Name</th><th>Quantity</th><th>Unit</th></tr>
+                <thead><tr><th>Name</th><th>Quantity</th><th>Unit</th></tr></thead>
                 @for (int i = 0; i < ViewBag.Ingredients.Count; i++)
                 {
                     <tr><td>@ViewBag.Ingredients[i].Name</td><td>@ViewBag.Ingredients[i].DisplayQuantity</td><td>@ViewBag.Ingredients[i].Unit</td></tr>

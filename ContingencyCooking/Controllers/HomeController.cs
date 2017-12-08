@@ -163,7 +163,9 @@ namespace ContingencyCooking.Controllers
 
         public ActionResult RateExperience(string RecipeID, string Difficulty)
         {
-            ViewBag.RecipeID = RecipeID;
+            JObject JsonData = (JObject)Session["Recipe"];
+            ViewBag.RecipeName = JsonData["Title"];
+            ViewBag.RecipeID = JsonData["RecipeID"];
             ViewBag.Difficulty = Difficulty;
             return View("AttemptUpload");
         }
@@ -184,7 +186,7 @@ namespace ContingencyCooking.Controllers
             return View("SeeFullRecipe");
         }
 
-        public ActionResult Test()
+        public ActionResult FrontPage()
         {
             return View();
         }

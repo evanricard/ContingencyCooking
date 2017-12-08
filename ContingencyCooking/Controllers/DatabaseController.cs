@@ -20,33 +20,40 @@ namespace ContingencyCooking.Controllers
         public ActionResult SubmitRecipeAttempt(RecipeAttempt attempt)
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
-
-            if (ORM.Recipes.Find(attempt.RecipeID) == null)
+            try
             {
-                JObject JsonData = (JObject)Session["Recipe"];
+                if (ORM.Recipes.Find(attempt.RecipeID) == null)
+                {
+                    JObject JsonData = (JObject)Session["Recipe"];
 
-                Recipe RecipeForDB = new Recipe();
+                    Recipe RecipeForDB = new Recipe();
 
-                RecipeForDB.RecipeID = JsonData["RecipeID"].ToString();
-                // RecipeForDB.Description = JsonData["Description"].ToString();
-                RecipeForDB.Ingredients_Num = JsonData["Ingredients"].ToList().Count;
-                RecipeForDB.Category = JsonData["Cuisine"].ToString();
-                RecipeForDB.Title = JsonData["Title"].ToString();
+                    RecipeForDB.RecipeID = JsonData["RecipeID"].ToString();
+                    // RecipeForDB.Description = JsonData["Description"].ToString();
+                    RecipeForDB.Ingredients_Num = JsonData["Ingredients"].ToList().Count;
+                    RecipeForDB.Category = JsonData["Cuisine"].ToString();
+                    RecipeForDB.Title = JsonData["Title"].ToString();
 
-                ORM.Recipes.Add(RecipeForDB);
+                    ORM.Recipes.Add(RecipeForDB);
+                }
+                ORM.RecipeAttempts.Add(attempt);
+                ORM.SaveChanges();
+
+                Session["Recipe"] = null;
+                return RedirectToAction("DisplayUserAttempts", new { User_ID = attempt.User_ID });
             }
-            ORM.RecipeAttempts.Add(attempt);
-            ORM.SaveChanges();
-
-            Session["Recipe"] = null;
-            return RedirectToAction("DisplayUserAttempts", new { User_ID = attempt.User_ID });
+            catch (Exception e)
+            {
+                return View("../Home/ErrorPage");
+            }
         }
 
         //Profile info-related
         [Authorize]
-        public ActionResult DisplayUserAttempts(string User_ID)
+        public ActionResult DisplayUserAttempts()
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
+            var User_ID = User.Identity.GetUserId();
 
             List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
 
@@ -99,15 +106,8 @@ namespace ContingencyCooking.Controllers
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
             ContingencyCookingDAL DAL = new ContingencyCookingDAL();
-            // ApplicationUser user1 = UserORM.Users.Find(/*---pk is needed-----*/);
-
 
             List<RecipeAttempt> UserList = ORM.RecipeAttempts.ToList();
-            /*List<string> titles = new List<string>();
-            foreach (RecipeAttempt attempt in UserList)
-            {
-                titles.Add(attempt.Recipe.Title);
-            } */
 
             List<string> UserEmails = DAL.GetUserEmailsFromAttempts(UserList);
 

@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "FrontPage";
+}
+
+<style>
+
+.animation-box {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  position: absolute;
+}
+
+.animation-container {
+  width: 1000rem;
+  height: 30rem;
+}
+
+@@keyframes topFadeOut {
+  0% {
+    position: absolute;
+    top: -3rem;
+    opacity: 0;
+  }
+
+  75% {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.first-text {
+  font-size: 4.4rem;
+  position: fixed;
+  opacity: 0;
+  animation-name: topFadeOut;
+  animation-duration: 5s;
+  color: black;
+}
+</style>
+
+<section class="animation-box">
+    <div class="first-text">This is an example text</div>
+</section>

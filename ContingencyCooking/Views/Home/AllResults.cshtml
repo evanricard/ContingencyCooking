@@ -6,33 +6,50 @@
 
 @using Microsoft.AspNet.Identity;
 @using Microsoft.AspNet.Identity.Owin;
+
+<style>
+    .formcontainer{
+        display:flex;
+        justify-content: space-between;
+    }
+
+    form {
+        width: 30%;
+        display: flex;
+    }
+
+    form input[type="submit"] {
+        margin-left: 10px;
+    }
+</style>
+
+
 <h2>All Results</h2>
 
-
-<form action="/Database/SearchAllAttempts" method="get">
-    <input class="form-control" type="text" name="InputTitle" />
-    <input class="btn btn-primary" type="submit" value="Search by Title">
-</form>
-<br />
-<form action="/Database/SearchAllAttempts" method="get">
-    <select class="form-control" name="InputDifficulty">
-        @foreach (var Difficulty in ViewBag.ListDifficulty)
-        {
-            <option value="@Difficulty">@Difficulty</option>
-        }
-    </select>
-    <input class="btn btn-primary" type="submit" value="Select Difficulty">
-</form>
-<br />
-<form action="/Database/SearchAllAttempts" method="get">
-    <select class="form-control" name="InputRating">
-        @foreach (var Rating in ViewBag.ListRating)
-        {
-            <option value="@Rating">@Rating</option>
-        }
-    </select>
-    <input class="btn btn-primary" type="submit" value="Select Rating">
-</form>
+<div class="formcontainer">
+    <form action="/Database/SearchAllAttempts" method="get">
+        <input class="form-control" type="text" name="InputTitle" />
+        <input class="btn btn-primary" type="submit" value="Search by Title">
+    </form>
+    <form action="/Database/SearchAllAttempts" method="get">
+        <select class="form-control" name="InputDifficulty">
+            @foreach (var Difficulty in ViewBag.ListDifficulty)
+            {
+                <option value="@Difficulty">@Difficulty</option>
+            }
+        </select>
+        <input class="btn btn-primary" type="submit" value="Select Difficulty">
+    </form>
+    <form action="/Database/SearchAllAttempts" method="get">
+        <select class="form-control" name="InputRating">
+            @foreach (var Rating in ViewBag.ListRating)
+            {
+                <option value="@Rating">@Rating</option>
+            }
+        </select>
+        <input class="btn btn-primary" type="submit" value="Select Rating">
+    </form>
+</div>
 
 <br />
 <table class="table">

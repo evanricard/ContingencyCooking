@@ -1,30 +1,50 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>User Info</h2>
-        <table class="table-bordered">
-            <tr>
-                <td>@ViewBag.Username
-                <img src="~/Content/Images/dummy-image.jpg" style="height:200px; padding:5px" />
-                <p style="padding:5px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu pharetra arcu, 
-                eget viverra ligula. Etiam cursus dictum tincidunt. Pellentesque eu egestas tellus. 
-                Proin quis dolor et nisl vulputate elementum. Donec accumsan vitae lacus id consectetur. 
-                </p>
-                </td>
-            </tr>
-        </table>
+@using Microsoft.AspNet.Identity;
+<h3 style="text-align: center">Contingency Cooking!</h3>
+<br />
+<div class="container-fluid">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="text-align:center">
+                    <h3 class="panel-title itemName" >Welcome!</h3>
+                </div>
+                <div class="panel-body bounding-box">
+                    <h4 class="text-center itemDesc">Welcome to Contingency Cookin'! You know what they say, "If you can't handle the heat, get out of the kitchen!"<br /> In this true test of culinary skill, we invite users to demonstrate their cooking prowess by recreating common recipes.<br />The catch is, we can provide you with select information for the recipe and your challenge as a cuisine-connoisseur is to try to match your knowledge against ours!</h4><br />
+                </div>
+            </div>
+        </div>
+    <div class="col-md-4" style="text-align:center">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="text-align:center">
+                <h3 class="panel-title itemName">Getting started!</h3>
+            </div>
+            <div class="panel-body bounding-box">
+                
+                <ul class="list-group">
+                    <li class="list-group-item"> Make sure you are registered and signed in.</li>
+                    <li class="list-group-item"> Head to the "Cook!" Section and find a recipe to test your cooking skills</li>
+                    <li class="list-group-item"> Upload a picture of your creation for your profile!</li>
+                    <li class="list-group-item"> Rate your creation from 1 - 5 stars!</li>
+                    <li class="list-group-item"> View all your cooking creations in your profile, but don't forget to view all the cooking concoctions in the "Results" and "Leaderboard" sections!</li>
+                </ul><br />
+            </div>
+        </div>
     </div>
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>Welcome to Contingency Cookin'! You know what they say, "If you can't handle the heat, get out of the kitchen!" In this true test of culinary skill, we invite users to demonstrate their cooking prowess by recreating common recipes. The only catch is, we provide you with little to no information on a recipe and your challenge as a cuisine-connoisseur is to try to match your knowledge against ours!</p>
-    </div>
-    <div class="col-md-4">
-        <h2>Recipes</h2>
-        <a href="/Home/Search/">Search Recipes</a>
-
+        <div class="panel panel-default">
+            <div class="panel-heading" style="text-align:center">
+                <h3 class="panel-title itemName">Jump Around!</h3>
+            </div>
+            <div class="panel-body bounding-box">
+                <div class="list-group">
+                    <a href="/Home/Search" class="list-group-item list-group-item-action"> &#9889 Search for Recipes</a>
+                    <a href="/Database/DisplayUserAttempts?User_ID=@User.Identity.GetUserId()" class="list-group-item list-group-item-action">&#9889 View Your Profile</a>
+                    <a href="/Database/DisplayAllAttempts/" class="list-group-item list-group-item-action">&#9889 See other cooks creations!</a>
+                    <a href="/Leaderboard/DisplayLeaderboard/" class="list-group-item list-group-item-action">&#9889 Go to the Leaderboard!</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

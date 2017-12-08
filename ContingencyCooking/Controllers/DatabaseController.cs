@@ -97,15 +97,8 @@ namespace ContingencyCooking.Controllers
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
             ContingencyCookingDAL DAL = new ContingencyCookingDAL();
-            // ApplicationUser user1 = UserORM.Users.Find(/*---pk is needed-----*/);
-
 
             List<RecipeAttempt> UserList = ORM.RecipeAttempts.ToList();
-            /*List<string> titles = new List<string>();
-            foreach (RecipeAttempt attempt in UserList)
-            {
-                titles.Add(attempt.Recipe.Title);
-            } */
 
             List<string> UserEmails = DAL.GetUserEmailsFromAttempts(UserList);
 

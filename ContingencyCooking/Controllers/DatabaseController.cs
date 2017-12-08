@@ -19,26 +19,32 @@ namespace ContingencyCooking.Controllers
         public ActionResult SubmitRecipeAttempt(RecipeAttempt attempt)
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
-
-            if (ORM.Recipes.Find(attempt.RecipeID) == null)
+            try
             {
-                JObject JsonData = (JObject)Session["Recipe"];
+                if (ORM.Recipes.Find(attempt.RecipeID) == null)
+                {
+                    JObject JsonData = (JObject)Session["Recipe"];
 
-                Recipe RecipeForDB = new Recipe();
+                    Recipe RecipeForDB = new Recipe();
 
-                RecipeForDB.RecipeID = JsonData["RecipeID"].ToString();
-                // RecipeForDB.Description = JsonData["Description"].ToString();
-                RecipeForDB.Ingredients_Num = JsonData["Ingredients"].ToList().Count;
-                RecipeForDB.Category = JsonData["Cuisine"].ToString();
-                RecipeForDB.Title = JsonData["Title"].ToString();
+                    RecipeForDB.RecipeID = JsonData["RecipeID"].ToString();
+                    // RecipeForDB.Description = JsonData["Description"].ToString();
+                    RecipeForDB.Ingredients_Num = JsonData["Ingredients"].ToList().Count;
+                    RecipeForDB.Category = JsonData["Cuisine"].ToString();
+                    RecipeForDB.Title = JsonData["Title"].ToString();
 
-                ORM.Recipes.Add(RecipeForDB);
+                    ORM.Recipes.Add(RecipeForDB);
+                }
+                ORM.RecipeAttempts.Add(attempt);
+                ORM.SaveChanges();
+
+                Session["Recipe"] = null;
+                return RedirectToAction("DisplayUserAttempts", new { User_ID = attempt.User_ID });
             }
-            ORM.RecipeAttempts.Add(attempt);
-            ORM.SaveChanges();
-
-            Session["Recipe"] = null;
-            return RedirectToAction("DisplayUserAttempts", new { User_ID = attempt.User_ID });
+            catch (Exception e)
+            {
+                return View("../Home/ErrorPage");
+            }
         }
 
         [Authorize]
@@ -118,7 +124,7 @@ namespace ContingencyCooking.Controllers
 
             if (InputTitle != null && InputDifficulty == null && InputRating == null)
             {
-               UserList = (ORM.RecipeAttempts.Where(x => x.Recipe.Title.ToLower().Contains(InputTitle.ToLower())).ToList());
+                UserList = (ORM.RecipeAttempts.Where(x => x.Recipe.Title.ToLower().Contains(InputTitle.ToLower())).ToList());
             }
             else if (InputTitle == null && InputDifficulty != null && InputRating == null)
             {

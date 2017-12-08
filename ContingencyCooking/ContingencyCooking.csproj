@@ -339,6 +339,7 @@
     <Content Include="Views\Home\UserProfile.cshtml" />
     <Content Include="Views\Home\AttemptUpload.cshtml" />
     <Content Include="Views\Home\SeeFullRecipe.cshtml" />
+    <Content Include="Views\Home\ErrorPage.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

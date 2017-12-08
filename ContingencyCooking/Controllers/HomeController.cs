@@ -31,6 +31,7 @@ namespace ContingencyCooking.Controllers
             return View();
         }
 
+        //Start cooking but we need authorization first 
         [Authorize]
         public ActionResult Search()
         {
@@ -181,6 +182,11 @@ namespace ContingencyCooking.Controllers
             ViewBag.Photo = JsonData["PhotoUrl"];
 
             return View("SeeFullRecipe");
+        }
+
+        public ActionResult Test()
+        {
+            return View();
         }
 
     }

@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>Test</h2>
+
+
+@*<div class="linechart" style="height:200px;"</div>
+<script>
+
+    new Morris.line({
+
+        element: 'linechart',
+        data: [
+            { year: '2008', value: 20 },
+            { year: '2002', value: 20 },
+            { year: '2004', value: 20 },
+            { year: '20010', value: 20 }
+
+        ],
+
+        xkey: 'year',
+        ykeys: ['value'],
+        labels: ['Value']
+
+    });
+
+</script>*@
+
+<div id="donut-example"></div>
+Morris.Donut({
+  element: 'donut-example',
+  data: [
+    {label: "Download Sales", value: 12},
+    {label: "In-Store Sales", value: 30},
+    {label: "Mail-Order Sales", value: 20}
+  ]
+});

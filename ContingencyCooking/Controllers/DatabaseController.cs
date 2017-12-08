@@ -16,6 +16,7 @@ namespace ContingencyCooking.Controllers
 {
     public class DatabaseController : Controller
     {
+
         public ActionResult SubmitRecipeAttempt(RecipeAttempt attempt)
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
@@ -41,6 +42,7 @@ namespace ContingencyCooking.Controllers
             return RedirectToAction("DisplayUserAttempts", new { User_ID = attempt.User_ID });
         }
 
+        //Profile info-related
         [Authorize]
         public ActionResult DisplayUserAttempts(string User_ID)
         {
@@ -125,7 +127,7 @@ namespace ContingencyCooking.Controllers
 
             if (InputTitle != null && InputDifficulty == null && InputRating == null)
             {
-               UserList = (ORM.RecipeAttempts.Where(x => x.Recipe.Title.ToLower().Contains(InputTitle.ToLower())).ToList());
+                UserList = (ORM.RecipeAttempts.Where(x => x.Recipe.Title.ToLower().Contains(InputTitle.ToLower())).ToList());
             }
             else if (InputTitle == null && InputDifficulty != null && InputRating == null)
             {

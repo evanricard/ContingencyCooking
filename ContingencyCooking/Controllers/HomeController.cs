@@ -185,6 +185,11 @@ namespace ContingencyCooking.Controllers
             return View("SeeFullRecipe");
         }
 
+        public ActionResult FrontPage()
+        {
+            return View();
+        }
+
     }
 
 }

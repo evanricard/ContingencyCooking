@@ -3,7 +3,7 @@
     ViewBag.Title = "AttemptUpload";
 }
 
-<h4>Please upload a picture of your creation!</h4>
+<h4>Please upload a picture for your creation of @ViewBag.RecipeName!</h4>
 
 @using (Html.BeginForm("ImageUpload", "Cloudinary", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {

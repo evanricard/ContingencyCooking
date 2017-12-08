@@ -36,7 +36,7 @@ namespace ContingencyCooking.Controllers
 
                 JObject jsonData = (JObject)apiReturn.JsonObj;
 
-               
+
                 ViewBag.PictureURL = jsonData["secure_url"].ToString();
                 ViewBag.RecipeID = RecipeID;
                 ViewBag.Difficulty = Difficulty;
@@ -49,6 +49,9 @@ namespace ContingencyCooking.Controllers
             {
                 ViewBag.Upload = "FAIL";
             }
+
+            JObject JsonData = (JObject)Session["Recipe"];
+            ViewBag.RecipeName = JsonData["Title"];
 
             return View("../Home/RateExperience");
         }

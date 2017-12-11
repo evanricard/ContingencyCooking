@@ -145,5 +145,23 @@ namespace ContingencyCooking.Controllers
 
             return View("../Home/AllResults");
         }
+
+        public ActionResult AdvancedSearch(string InputTitle, string InputDifficulty, string InputRating)
+        {
+            RecipeDBEntities ORM = new RecipeDBEntities();
+            ContingencyCookingDAL DAL = new ContingencyCookingDAL();
+            List<RecipeAttempt> UserList = new List<RecipeAttempt>();
+
+            UserList = ORM.RecipeAttempts.Where(x => x.Recipe.Title.ToLower().Contains(InputTitle.ToLower())).ToList().Where(x => x.Difficulty.Contains(InputDifficulty)).ToList().Where(x => x.Rating.ToString().Contains(InputRating)).ToList();
+
+            List<string> UserEmails = DAL.GetUserEmailsFromAttempts(UserList);
+
+            ViewBag.Emails = UserEmails;
+            ViewBag.Results = UserList;
+            ViewBag.ListDifficulty = ORM.RecipeAttempts.Select(y => y.Difficulty).Distinct().ToList();
+            ViewBag.ListRating = ORM.RecipeAttempts.Select(y => y.Rating).Distinct().ToList();
+
+            return View("../Home/AllResults");
+        }
     }
 }

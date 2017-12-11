@@ -51,6 +51,29 @@
     </form>
 </div>
 
+<div class="formcontainer">
+    <form action="/Database/AdvancedSearch" method="get">
+
+        <input class="form-control" type="text" name="InputTitle" />
+
+        <select class="form-control" name="InputRating">
+            @foreach (var Rating in ViewBag.ListRating)
+            {
+                <option value="@Rating">@Rating</option>
+            }
+        </select>
+
+        <select class="form-control" name="InputDifficulty">
+            @foreach (var Difficulty in ViewBag.ListDifficulty)
+            {
+                <option value="@Difficulty">@Difficulty</option>
+            }
+        </select>
+
+        <input class="btn btn-primary" type="submit" value="Search">
+    </form>
+</div>
+
 <br />
 <table class="table">
     <thead><tr><th></th><th>Title</th><th></th><th>Username</th><th>Difficulty</th><th>Rating</th></tr></thead>

@@ -15,11 +15,12 @@ namespace ContingencyCooking.Controllers
 {
     public class LeaderboardController : Controller
     {
+        //Generate a Leaderboard View by grabbing an ApplicationUser from Identity
+        //and using that data we popuplate a LeaderboardUser 
         public ActionResult DisplayLeaderboard()
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
             ApplicationDbContext UserORM = new ApplicationDbContext();
-
 
             List<LeaderboardUser> LBlist = new List<LeaderboardUser>();
 
@@ -39,6 +40,7 @@ namespace ContingencyCooking.Controllers
             return View("../Home/Leaderboard");
         }
 
+        //We can then order that data by using simple OrderBy List<T> methods
         public ActionResult OrderByUserName()
         {
             RecipeDBEntities ORM = new RecipeDBEntities();

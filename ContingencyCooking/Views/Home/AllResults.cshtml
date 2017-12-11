@@ -24,7 +24,7 @@
 </style>
 
 
-<h2>All Results</h2>
+<h2 class="text-center">All Results</h2>
 
 <div class="formcontainer">
     <form action="/Database/SearchAllAttempts" method="get">
@@ -48,6 +48,29 @@
             }
         </select>
         <input class="btn btn-primary" type="submit" value="Select Rating">
+    </form>
+</div>
+
+<div class="formcontainer">
+    <form action="/Database/AdvancedSearch" method="get">
+
+        <input class="form-control" type="text" name="InputTitle" />
+
+        <select class="form-control" name="InputRating">
+            @foreach (var Rating in ViewBag.ListRating)
+            {
+                <option value="@Rating">@Rating</option>
+            }
+        </select>
+
+        <select class="form-control" name="InputDifficulty">
+            @foreach (var Difficulty in ViewBag.ListDifficulty)
+            {
+                <option value="@Difficulty">@Difficulty</option>
+            }
+        </select>
+
+        <input class="btn btn-primary" type="submit" value="Search">
     </form>
 </div>
 

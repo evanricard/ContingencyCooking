@@ -209,6 +209,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AppUsers.cs" />
+    <Compile Include="Models\AspNetUser.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LeaderboardUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -248,6 +250,7 @@
     <Content Include="Content\Images\Kevin.png" />
     <Content Include="Content\Images\pierce.png" />
     <Content Include="Content\Images\schmedium.png" />
+    <Content Include="Content\morris.css" />
     <Content Include="Content\startbootstrap-sb-admin-2-gh-pages\data\flot-data.js" />
     <Content Include="Content\startbootstrap-sb-admin-2-gh-pages\data\morris-data.js" />
     <Content Include="Content\startbootstrap-sb-admin-2-gh-pages\dist\css\sb-admin-2.css" />
@@ -448,16 +451,23 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\morris.js" />
+    <Content Include="Scripts\morris.min.js" />
+    <Content Include="Scripts\raphael.js" />
+    <Content Include="Scripts\raphael.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
@@ -504,8 +514,10 @@
     <Content Include="Views\Home\UserProfile.cshtml" />
     <Content Include="Views\Home\AttemptUpload.cshtml" />
     <Content Include="Views\Home\SeeFullRecipe.cshtml" />
+    <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Home\ErrorPage.cshtml" />
     <Content Include="Views\Home\FrontPage.cshtml" />
+    <Content Include="Views\Home\DataGraph.cshtml" />
     <Content Include="Views\Home\Graph.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>

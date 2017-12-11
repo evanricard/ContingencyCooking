@@ -9,6 +9,7 @@
 
 namespace ContingencyCooking.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
 
@@ -21,6 +22,7 @@ namespace ContingencyCooking.Models
         public Nullable<int> Rating { get; set; }
         public string image { get; set; }
 
+        [JsonIgnore]
         public virtual Recipe Recipe { get; set; }
     }
 }

@@ -11,6 +11,7 @@ using ContingencyCooking.Models;
 using Microsoft.AspNet.Identity;
 using System.Collections;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace ContingencyCooking.Controllers
 {
@@ -63,6 +64,11 @@ namespace ContingencyCooking.Controllers
 
             ViewBag.Username = username;
 
+            List<RecipeAttempt> YourList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
+
+            ViewBag.AllResults = JsonConvert.SerializeObject(ORM.RecipeAttempts.ToList());
+            ViewBag.YourResults = JsonConvert.SerializeObject(YourList);
+
             return View("../Home/UserProfile");
         }
 
@@ -75,6 +81,11 @@ namespace ContingencyCooking.Controllers
 
             ViewBag.Results = UserList;
 
+            List<RecipeAttempt> YourList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
+
+            ViewBag.AllResults = JsonConvert.SerializeObject(ORM.RecipeAttempts.ToList());
+            ViewBag.YourResults = JsonConvert.SerializeObject(YourList);
+
             return View("../Home/UserProfile");
         }
 
@@ -86,6 +97,11 @@ namespace ContingencyCooking.Controllers
 
             ViewBag.Results = UserList;
 
+            List<RecipeAttempt> YourList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
+
+            ViewBag.AllResults = JsonConvert.SerializeObject(ORM.RecipeAttempts.ToList());
+            ViewBag.YourResults = JsonConvert.SerializeObject(YourList);
+
             return View("../Home/UserProfile");
         }
 
@@ -96,6 +112,11 @@ namespace ContingencyCooking.Controllers
             List<RecipeAttempt> UserList = ORM.RecipeAttempts.OrderBy(w => w.Rating).Where(x => x.User_ID == User_ID).ToList();
 
             ViewBag.Results = UserList;
+
+            List<RecipeAttempt> YourList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
+
+            ViewBag.AllResults = JsonConvert.SerializeObject(ORM.RecipeAttempts.ToList());
+            ViewBag.YourResults = JsonConvert.SerializeObject(YourList);
 
             return View("../Home/UserProfile");
         }

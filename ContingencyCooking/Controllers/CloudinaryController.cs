@@ -59,6 +59,7 @@ namespace ContingencyCooking.Controllers
             //Utilizing session data for our recipe title 
             JObject JsonData = (JObject)Session["Recipe"];
             ViewBag.RecipeName = JsonData["Title"];
+            ViewBag.RecipeImageURL = JsonData["PhotoUrl"];
 
             return View("../Home/RateExperience");
         }

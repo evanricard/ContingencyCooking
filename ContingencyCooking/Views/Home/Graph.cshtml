@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Graph";
+}
+
+<h2>Graph</h2>
+
+<div id="myfirstchart" style="height: 250px;"></div>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<link href="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/morrisjs/morris.css" rel="stylesheet" />
+<script src="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/morrisjs/morris.js"></script>
+<script src="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/morrisjs/morris.min.js"></script>
+<script src="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/raphael/raphael.js"></script>
+<script src="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/raphael/raphael.min.js"></script>
+<script src="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/jquery/jquery.js"></script>
+<script src="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/jquery/jquery.min.js"></script>
+
+
+
+<script>
+    var results = @ViewBag.Results
+    new Morris.Line({
+        element: 'myfirstchart',
+        data: results,
+        xkey: 'AttemptID',
+        ykeys: ['Rating'],
+        labels: ['Rating']
+    });
+</script>
+

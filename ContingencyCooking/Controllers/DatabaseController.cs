@@ -42,9 +42,13 @@ namespace ContingencyCooking.Controllers
                 ORM.SaveChanges();
 
                 Session["Recipe"] = null;
+<<<<<<< HEAD
 
                 //TODO:
                 return RedirectToAction("DisplayUserAttempts", new { User_ID = attempt.User_ID });
+=======
+                return RedirectToAction("DisplayUserAttempts");
+>>>>>>> d3a84b07f131b29b521fdfc92887a0d0db746fd5
             }
             catch (Exception e)
             {

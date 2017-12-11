@@ -8,21 +8,47 @@
 @using Microsoft.AspNet.Identity.Owin;
 
 <style>
-    .formcontainer{
+    .formcontainer {
         display:flex;
         justify-content: space-between;
     }
 
-    form {
+    .formcontainer form {
         width: 30%;
         display: flex;
+        justify-content: space-between;
     }
 
     form input[type="submit"] {
         margin-left: 10px;
     }
-</style>
 
+    .advancedsearch {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .advancedsearch form{
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .s1 {
+        width: 50%;
+        display:flex;
+    }
+
+    .s2 {
+        width: 20%;
+        display: flex;
+    }
+
+    .s3 {
+        width: 20%;
+        display: flex;
+    }
+</style>
 
 <h2 class="text-center">All Results</h2>
 
@@ -48,6 +74,39 @@
             }
         </select>
         <input class="btn btn-primary" type="submit" value="Select Rating">
+    </form>
+</div>
+
+<br />
+
+<h4>Advanced Search</h4>
+
+<div class="advancedsearch">
+    <form action="/Database/AdvancedSearch" method="get">
+
+        <div class="s1"><input class="form-control" class="advancedform" type="text" name="InputTitle" placeholder="Recipe"/></div>
+
+        <div class="s2">
+            <select class="form-control" class="advancedform" name="InputDifficulty">
+                <option selected disabled>Difficulty</option>
+                @foreach (var Difficulty in ViewBag.ListDifficulty)
+                {
+                    <option value="@Difficulty">@Difficulty</option>
+                }
+            </select>
+        </div>
+        
+        <div class="s3">
+            <select class="form-control" class="advancedform" name="InputRating">
+                <option selected disabled>Rating</option>
+                @foreach (var Rating in ViewBag.ListRating)
+                {
+                    <option value="@Rating">@Rating</option>
+                }
+            </select>
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Search">
     </form>
 </div>
 

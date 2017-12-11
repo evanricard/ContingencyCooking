@@ -9,36 +9,95 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-2"><h2 style="text-align: center">Profile: @ViewBag.Username</h2><img id="profile" src="~/Content/Images/dummy-image.jpg" style="height:200px; padding:5px;" />
-        @using (Html.BeginForm("ImageUpload", "Cloudinary", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            <input type="file" id="photofile" name="file" size="23" value="Photo" /><br />
-
-        }
+        <br />
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>Your "Recipe Attempt" progress!</strong><br /> - Plotted with Difficulty & Rating
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div id="Rating Chart"></div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
         </div>
-            <div class="col-md-10">
-                <h2 class="text-center">Your Contingency Creations!</h2>
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Your "Recipe Attempt" List! 
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                </div>
                 <table class="table">
                     <thead><tr><th><a href="/Database/OrderByTitle?User_ID=@User.Identity.GetUserId()">Title</a></th><th><a href="/Database/OrderByDifficulty?User_ID=@User.Identity.GetUserId()">Difficulty</a></th><th><a href="/Database/OrderByRating?User_ID=@User.Identity.GetUserId()">Rating</a></th><th>Image</th></tr></thead>
                     @foreach (var Attempt in ViewBag.Results)
                     {
-                        <tr><td class="col-md-2">@Attempt.Recipe.Title: <br /><a href="/Home/ViewRecipe?RecipeID=@Attempt.RecipeID">Full recipe?</a></td>
-                    <td class="col-md-2">@Attempt.Difficulty</td>
-                    <td class="col-md-2">@for (int i = 0; i < @Attempt.Rating; i++)
-                    {
-                        <span>&#9733</span>
-                    }
-                    </td>
-                    <td class="col-md-6"><img src="@Attempt.image" style="width: 50%" /></td></tr>
+                        <tr>
+                            <td class="col-md-2">@Attempt.Recipe.Title: <br /><a href="/Home/ViewRecipe?RecipeID=@Attempt.RecipeID">Full recipe?</a></td>
+                            <td class="col-md-2">@Attempt.Difficulty</td>
+                            <td class="col-md-2">
+                                @for (int i = 0; i < @Attempt.Rating; i++)
+                            {
+                                <span>&#9733</span>
+                            }
+                        </td>
+                        <td class="col-md-6"><img src="@Attempt.image" style="width: 50%" /></td>
+                    </tr>
                     }
                 </table>
             </div>
+            <!-- /.panel -->
         </div>
+     </div>
 </div>
 
+<<<<<<< HEAD
 @*@Ajax.BeginForm()*@
 
 <script>
     $(#photofile).on('click',)
 </script>
 
+=======
+<<<<<<< HEAD
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<link href="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/morrisjs/morris.css" rel="stylesheet" />
+<script src="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/morrisjs/morris.js"></script>
+<script src="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/morrisjs/morris.min.js"></script>
+<script src="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/raphael/raphael.js"></script>
+<script src="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/raphael/raphael.min.js"></script>
+<script src="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/jquery/jquery.js"></script>
+<script src="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/jquery/jquery.min.js"></script>
+
+<script>
+    var results = @Html.Raw(ViewBag.YourResults)
+        new Morris.Bar({
+            element: 'Rating Chart',
+            data: results,
+            xkey: 'Difficulty',
+            ykeys: ['Rating'],
+            labels: ['Rating'],
+            ymax: [5],
+        });
+    var results = @Html.Raw(ViewBag.AllResults)
+        new Morris.Bar({
+        element: 'All Rating Chart',
+        data: results,
+        xkey: 'Difficulty',
+        ykeys: ['Rating'],
+        labels: ['Rating'],
+        ymax: [5],
+        });
+</script>
+=======
+@*@Ajax.BeginForm()
+
+<script>
+    $(#photofile).on('click',)
+</script>*@
+>>>>>>> cadd2310d399834ed79aa59278b261708fdeed83

@@ -208,6 +208,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712041532475_InitialCreate.cs" />
+    <Compile Include="Migrations\201712041532475_InitialCreate.Designer.cs">
+      <DependentUpon>201712041532475_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712112045281_aspusermigration.cs" />
+    <Compile Include="Migrations\201712112045281_aspusermigration.Designer.cs">
+      <DependentUpon>201712112045281_aspusermigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -532,6 +541,14 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712041532475_InitialCreate.resx">
+      <DependentUpon>201712041532475_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712112045281_aspusermigration.resx">
+      <DependentUpon>201712112045281_aspusermigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

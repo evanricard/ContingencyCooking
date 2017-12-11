@@ -11,7 +11,7 @@ using System.Web.Mvc;
 using ContingencyCooking.Models;
 using System.Text;
 using Microsoft.AspNet.Identity;
-
+using Newtonsoft.Json;
 
 namespace ContingencyCooking.Controllers
 {
@@ -203,12 +203,13 @@ namespace ContingencyCooking.Controllers
         public ActionResult Graph()
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
+
             var User_ID = User.Identity.GetUserId();
 
             List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
-
-            ViewBag.Results = Json(UserList);
-
+          
+            ViewBag.AllResults = JsonConvert.SerializeObject(ORM.RecipeAttempts.ToList());
+            ViewBag.YourResults = JsonConvert.SerializeObject(UserList);
             return View();
         }
     }

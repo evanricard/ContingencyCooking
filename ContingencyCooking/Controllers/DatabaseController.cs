@@ -11,6 +11,7 @@ using ContingencyCooking.Models;
 using Microsoft.AspNet.Identity;
 using System.Collections;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 using System.Diagnostics;
 
 namespace ContingencyCooking.Controllers
@@ -43,7 +44,6 @@ namespace ContingencyCooking.Controllers
 
                 Session["Recipe"] = null;
 
-                //TODO:
                 return RedirectToAction("DisplayUserAttempts", new { User_ID = attempt.User_ID });
 
             }
@@ -55,7 +55,7 @@ namespace ContingencyCooking.Controllers
         }
 
         //Look at profile info but only if user is logged in 
-        //TODO: Add graph data and the ability to view a profile picture
+        //TODO: Add the ability to view a profile picture
         [Authorize]
         public ActionResult DisplayUserAttempts()
         {
@@ -76,6 +76,11 @@ namespace ContingencyCooking.Controllers
 
             ViewBag.Username = username;
 
+            List<RecipeAttempt> YourList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
+
+            ViewBag.AllResults = JsonConvert.SerializeObject(ORM.RecipeAttempts.ToList());
+            ViewBag.YourResults = JsonConvert.SerializeObject(YourList);
+
             return View("../Home/UserProfile");
         }
 
@@ -87,6 +92,11 @@ namespace ContingencyCooking.Controllers
             List<RecipeAttempt> UserList = ORM.RecipeAttempts.OrderBy(w => w.Recipe.Title).Where(x => x.User_ID == User_ID).ToList();
 
             ViewBag.Results = UserList;
+
+            List<RecipeAttempt> YourList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
+
+            ViewBag.AllResults = JsonConvert.SerializeObject(ORM.RecipeAttempts.ToList());
+            ViewBag.YourResults = JsonConvert.SerializeObject(YourList);
 
             return View("../Home/UserProfile");
         }
@@ -100,6 +110,11 @@ namespace ContingencyCooking.Controllers
 
             ViewBag.Results = UserList;
 
+            List<RecipeAttempt> YourList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
+
+            ViewBag.AllResults = JsonConvert.SerializeObject(ORM.RecipeAttempts.ToList());
+            ViewBag.YourResults = JsonConvert.SerializeObject(YourList);
+
             return View("../Home/UserProfile");
         }
 
@@ -111,6 +126,11 @@ namespace ContingencyCooking.Controllers
             List<RecipeAttempt> UserList = ORM.RecipeAttempts.OrderBy(w => w.Rating).Where(x => x.User_ID == User_ID).ToList();
 
             ViewBag.Results = UserList;
+
+            List<RecipeAttempt> YourList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
+
+            ViewBag.AllResults = JsonConvert.SerializeObject(ORM.RecipeAttempts.ToList());
+            ViewBag.YourResults = JsonConvert.SerializeObject(YourList);
 
             return View("../Home/UserProfile");
         }
@@ -154,6 +174,24 @@ namespace ContingencyCooking.Controllers
             {
                 UserList = ORM.RecipeAttempts.Where(x => x.Rating.ToString().Contains(InputRating)).ToList();
             }
+
+            List<string> UserEmails = DAL.GetUserEmailsFromAttempts(UserList);
+
+            ViewBag.Emails = UserEmails;
+            ViewBag.Results = UserList;
+            ViewBag.ListDifficulty = ORM.RecipeAttempts.Select(y => y.Difficulty).Distinct().ToList();
+            ViewBag.ListRating = ORM.RecipeAttempts.Select(y => y.Rating).Distinct().ToList();
+
+            return View("../Home/AllResults");
+        }
+
+        public ActionResult AdvancedSearch(string InputTitle, string InputDifficulty, string InputRating)
+        {
+            RecipeDBEntities ORM = new RecipeDBEntities();
+            ContingencyCookingDAL DAL = new ContingencyCookingDAL();
+            List<RecipeAttempt> UserList = new List<RecipeAttempt>();
+
+            UserList = ORM.RecipeAttempts.Where(x => x.Recipe.Title.ToLower().Contains(InputTitle.ToLower())).ToList().Where(x => x.Difficulty.Contains(InputDifficulty)).ToList().Where(x => x.Rating.ToString().Contains(InputRating)).ToList();
 
             List<string> UserEmails = DAL.GetUserEmailsFromAttempts(UserList);
 

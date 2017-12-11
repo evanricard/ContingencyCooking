@@ -95,6 +95,7 @@ namespace ContingencyCooking.Controllers
                 //    ProfilePic = jsonData["secure_url"].ToString()
                 //};
 
+
                 ViewBag.PictureURL = jsonData["secure_url"].ToString();
 
                 ViewBag.Upload = jsonData["secure_url"];

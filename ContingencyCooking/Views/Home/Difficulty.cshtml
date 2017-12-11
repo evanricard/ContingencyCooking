@@ -2,8 +2,11 @@
 @{
     ViewBag.Title = "Difficulty";
 }
-
-
+<style>
+    a:link {
+        color: black;
+    }
+</style>
 @*<style>
      body {
         font-family: sans-serif;
@@ -14,21 +17,45 @@
 </style>*@
 <h2 class="text-center">Difficulty</h2>
 
-
-<div class="panel panel-default col-md-4">
-    <h2>Level 1</h2>
-    <img src="~/Content/Images/easy.jpg" style="height:200px"/>
-    <p><a href="/Home/ChooseDifficulty1?RecipeID=@ViewBag.RecipeID">Level 1: </a>Find your way through this recipe with full instructions & ingredients on the easiest difficulty!</p>
-</div>
-<div class="panel panel-warning col-md-4">
-    <h2>Level 2</h2>
-    <img src="~/Content/Images/schmedium.png" style="height:200px"/>
-    <p><a href="/Home/ChooseDifficulty2?RecipeID=@ViewBag.RecipeID">Level 2: </a>Find your way through a recipe with redacted instructiosn and limited ingredient information!</p>
-    @*<p style="bottom:50%"</p>*@
-</div>
-<div class="panel panel-danger col-md-4">
-    <h2>Level 3</h2>
-    <img src="~/Content/Images/k.jpg" style="height:200px" />
-    <p><a href="/Home/ChooseDifficulty3?RecipeID=@ViewBag.RecipeID">Level 3: </a>Find your way through a recipe with just the ingredients and nothing else! Good Luck! <span class="glyphicon glyphicon-warning-sign"></span></p>
-    
-</div>
+<a href="/Home/ChooseDifficulty1?RecipeID=@ViewBag.RecipeID">
+    <div class="col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Mild</strong> <span class="glyphicon glyphicon-fire"></span>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                New to this recipe? Maybe it is best to try it with the full instructions this time? This is a great place to start for a beginner!
+            </div>
+        </div>
+        <!-- /.panel -->
+    </div>
+</a>
+<a href="/Home/ChooseDifficulty2?RecipeID=@ViewBag.RecipeID">
+    <div class="col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Medium</strong> <span class="glyphicon glyphicon-fire"></span> <span class="glyphicon glyphicon-fire"></span>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                Ready for a challenge? Try this recipe with the ingredients removed from the instructions and see what you can create!
+            </div>
+        </div>
+        <!-- /.panel -->
+    </div>
+</a>
+<a href="/Home/ChooseDifficulty3?RecipeID=@ViewBag.RecipeID">
+    <div class="col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Spicy</strong> <span class="glyphicon glyphicon-fire"></span> <span class="glyphicon glyphicon-fire"></span> <span class="glyphicon glyphicon-fire"></span>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                Feeling Confident? Spicy? Trying this recipe with just an ingredient list and show off your culinary skills!
+            </div>
+        </div>
+        <!-- /.panel -->
+    </div>
+</a>

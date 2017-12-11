@@ -25,7 +25,9 @@ namespace ContingencyCooking
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-social.less",
                       "~/Content/site.css"));
+
         }
     }
 }

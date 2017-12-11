@@ -13,7 +13,7 @@ namespace ContingencyCooking.Models
     public class ApplicationUser : IdentityUser
     {
 
-        public string ProfilePic { get; set; }
+        //public string ProfilePic { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

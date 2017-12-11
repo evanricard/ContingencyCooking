@@ -6,10 +6,15 @@
 
 @using Microsoft.AspNet.Identity;
 @using Microsoft.AspNet.Identity.Owin;
+
 <div class="container">
     <div class="row">
         <div class="col-md-2"><h2 style="text-align: center">Profile: @ViewBag.Username</h2><img id="profile" src="~/Content/Images/dummy-image.jpg" style="height:200px; padding:5px;" />
+        @using (Html.BeginForm("ImageUpload", "Cloudinary", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
             <input type="file" id="photofile" name="file" size="23" value="Photo" /><br />
+
+        }
         </div>
             <div class="col-md-10">
                 <h2 class="text-center">Your Contingency Creations!</h2>
@@ -30,3 +35,10 @@
             </div>
         </div>
 </div>
+
+@*@Ajax.BeginForm()
+
+<script>
+    $(#photofile).on('click',)
+</script>*@
+

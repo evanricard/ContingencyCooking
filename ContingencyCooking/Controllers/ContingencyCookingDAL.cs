@@ -15,6 +15,7 @@ namespace ContingencyCooking.Controllers
 {
     public class ContingencyCookingDAL
     {
+        //Make a request for Json and do a search for a recipe 
         public JObject SearchByInput(string input)
         {
             string apiKey = ConfigurationManager.AppSettings["BigOven"];
@@ -36,6 +37,7 @@ namespace ContingencyCooking.Controllers
             return JsonData;
         }
 
+        //Make a request for a recipe by ID
         public JObject GetRecipeByID(string RecipeID)
         {
             string apiKey = ConfigurationManager.AppSettings["BigOven"];
@@ -57,6 +59,7 @@ namespace ContingencyCooking.Controllers
             return JsonData;
         }
 
+        //Ask Entity to get us a list of users from all of the recipes attempted
         public List<string> GetUserEmailsFromAttempts(List<RecipeAttempt> UserList)
         {
             ApplicationDbContext UserORM = new ApplicationDbContext();

@@ -37,11 +37,13 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
+        <span class="glyphicon glyphicon-globe"></span>
         <footer>
             <p>&copy; @DateTime.Now.Year - <a href="https://github.com/evanricard/ContingencyCooking">Github</a>, 
             @Html.ActionLink("Home", "Index", "Home"), @Html.ActionLink("About", "About", "Home")</p>
         </footer>
     </div>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

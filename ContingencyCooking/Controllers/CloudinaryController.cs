@@ -90,10 +90,11 @@ namespace ContingencyCooking.Controllers
                 //Identity DBContext
                 ApplicationDbContext UserORM = new ApplicationDbContext();
 
-                ApplicationUser applicationUser = new ApplicationUser
-                {
-                  //  ProfilePic = jsonData["secure_url"].ToString()
-                };
+                //ApplicationUser applicationUser = new ApplicationUser
+                //{
+                //    ProfilePic = jsonData["secure_url"].ToString()
+                //};
+
 
                 ViewBag.PictureURL = jsonData["secure_url"].ToString();
 

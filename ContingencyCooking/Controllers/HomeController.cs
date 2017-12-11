@@ -10,6 +10,8 @@ using System.Web;
 using System.Web.Mvc;
 using ContingencyCooking.Models;
 using System.Text;
+using Microsoft.AspNet.Identity;
+
 
 namespace ContingencyCooking.Controllers
 {
@@ -190,6 +192,17 @@ namespace ContingencyCooking.Controllers
             return View();
         }
 
+        public ActionResult Graph()
+        {
+            RecipeDBEntities ORM = new RecipeDBEntities();
+            var User_ID = User.Identity.GetUserId();
+
+            List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
+
+            ViewBag.Results = Json(UserList);
+
+            return View();
+        }
     }
 
 }

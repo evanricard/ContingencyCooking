@@ -11,11 +11,13 @@ using ContingencyCooking.Models;
 using Microsoft.AspNet.Identity;
 using System.Collections;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace ContingencyCooking.Controllers
 {
     public class DatabaseController : Controller
     {
+        //Submit a user's attempt to RECIPEDB 
         public ActionResult SubmitRecipeAttempt(RecipeAttempt attempt)
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
@@ -35,24 +37,38 @@ namespace ContingencyCooking.Controllers
 
                     ORM.Recipes.Add(RecipeForDB);
                 }
+
                 ORM.RecipeAttempts.Add(attempt);
                 ORM.SaveChanges();
 
                 Session["Recipe"] = null;
+<<<<<<< HEAD
+
+                //TODO:
+                return RedirectToAction("DisplayUserAttempts", new { User_ID = attempt.User_ID });
+=======
                 return RedirectToAction("DisplayUserAttempts");
+>>>>>>> d3a84b07f131b29b521fdfc92887a0d0db746fd5
             }
             catch (Exception e)
             {
+                Debug.WriteLine(e);
                 return View("../Home/ErrorPage");
             }
         }
 
+        //Look at profile info but only if user is logged in 
+        //TODO: Add graph data and the ability to view a profile picture
         [Authorize]
         public ActionResult DisplayUserAttempts()
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
+
+            //Entity
             var User_ID = User.Identity.GetUserId();
 
+            //-Get the initial portion of a username from recipe 
+            //attempts in RECIPEDB
             List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
 
             string username = User.Identity.GetUserName().ToString();
@@ -66,7 +82,7 @@ namespace ContingencyCooking.Controllers
             return View("../Home/UserProfile");
         }
 
-
+        //Order profile by Title
         public ActionResult OrderByTitle(string User_ID)
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
@@ -78,6 +94,7 @@ namespace ContingencyCooking.Controllers
             return View("../Home/UserProfile");
         }
 
+        //Order profile by Difficulty
         public ActionResult OrderByDifficulty(string User_ID)
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
@@ -89,6 +106,7 @@ namespace ContingencyCooking.Controllers
             return View("../Home/UserProfile");
         }
 
+        //Order profile by Rating
         public ActionResult OrderByRating(string User_ID)
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
@@ -100,6 +118,7 @@ namespace ContingencyCooking.Controllers
             return View("../Home/UserProfile");
         }
 
+        //Get and display a list of distinct recipes 
         public ActionResult DisplayAllAttempts()
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
@@ -117,6 +136,9 @@ namespace ContingencyCooking.Controllers
             return View("../Home/AllResults");
         }
 
+
+        //TODO: Add complexity to selection system
+        //Search all attempts by title, difficulty, or rating
         public ActionResult SearchAllAttempts(string InputTitle, string InputDifficulty, string InputRating)
         {
             RecipeDBEntities ORM = new RecipeDBEntities();

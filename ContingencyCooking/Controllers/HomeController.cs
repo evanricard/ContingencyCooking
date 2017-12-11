@@ -10,6 +10,8 @@ using System.Web;
 using System.Web.Mvc;
 using ContingencyCooking.Models;
 using System.Text;
+using Microsoft.AspNet.Identity;
+
 
 namespace ContingencyCooking.Controllers
 {
@@ -31,12 +33,16 @@ namespace ContingencyCooking.Controllers
             return View();
         }
 
+        //Go to search and start cooking but we need authorization first 
         [Authorize]
         public ActionResult Search()
         {
             return View();
         }
 
+
+        //Take the user's input for recipes, pass it through the data access layer 
+        //and return corresponding view
         public ActionResult SearchRecipes(string input)
         {
             ContingencyCookingDAL DAL = new ContingencyCookingDAL();
@@ -48,6 +54,8 @@ namespace ContingencyCooking.Controllers
             return View("DisplayRecipes");
         }
 
+        //Take the RecipeID for a given recipe and present them with a choice of difficulty
+        //TODO: Clean-up the difficulty page
         public ActionResult SearchById(string RecipeID)
         {
             ViewBag.RecipeID = RecipeID;
@@ -80,7 +88,7 @@ namespace ContingencyCooking.Controllers
             return View("Level3");
         }
 
-
+        //
         public ActionResult ChooseDifficulty2(string RecipeID)
         {
             ContingencyCookingDAL DAL = new ContingencyCookingDAL();
@@ -160,6 +168,7 @@ namespace ContingencyCooking.Controllers
             return View("Level1");
         }
 
+        //After attempt display read-only info about the recipe (ask user to upload image here)
         public ActionResult RateExperience(string RecipeID, string Difficulty)
         {
             JObject JsonData = (JObject)Session["Recipe"];
@@ -169,6 +178,7 @@ namespace ContingencyCooking.Controllers
             return View("AttemptUpload");
         }
 
+        //View full-page spread of recipe but nothing else
         public ActionResult ViewRecipe(string RecipeID)
         {
             ContingencyCookingDAL DAL = new ContingencyCookingDAL();
@@ -190,6 +200,17 @@ namespace ContingencyCooking.Controllers
             return View();
         }
 
+        public ActionResult Graph()
+        {
+            RecipeDBEntities ORM = new RecipeDBEntities();
+            var User_ID = User.Identity.GetUserId();
+
+            List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
+
+            ViewBag.Results = Json(UserList);
+
+            return View();
+        }
     }
 
 }

@@ -50,71 +50,82 @@
     }
 </style>
 
-<h2 class="text-center">All Results</h2>
 
-<div class="formcontainer">
-    <form action="/Database/SearchAllAttempts" method="get">
-        <input class="form-control" type="text" name="InputTitle" />
-        <input class="btn btn-primary" type="submit" value="Search by Title">
-    </form>
-    <form action="/Database/SearchAllAttempts" method="get">
-        <select class="form-control" name="InputDifficulty">
-            @foreach (var Difficulty in ViewBag.ListDifficulty)
-            {
-                <option value="@Difficulty">@Difficulty</option>
-            }
-        </select>
-        <input class="btn btn-primary" type="submit" value="Select Difficulty">
-    </form>
-    <form action="/Database/SearchAllAttempts" method="get">
-        <select class="form-control" name="InputRating">
-            @foreach (var Rating in ViewBag.ListRating)
-            {
-                <option value="@Rating">@Rating</option>
-            }
-        </select>
-        <input class="btn btn-primary" type="submit" value="Select Rating">
-    </form>
-</div>
-
-<br />
-
-<h4>Advanced Search</h4>
-
-<div class="advancedsearch">
-    <form action="/Database/AdvancedSearch" method="get">
-
-        <div class="s1"><input class="form-control" class="advancedform" type="text" name="InputTitle" placeholder="Recipe"/></div>
-
-        <div class="s2">
-            <select class="form-control" class="advancedform" name="InputDifficulty">
-                <option selected disabled>Difficulty</option>
-                @foreach (var Difficulty in ViewBag.ListDifficulty)
-                {
-                    <option value="@Difficulty">@Difficulty</option>
-                }
-            </select>
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="text-center">All Results</h2>
         </div>
-        
-        <div class="s3">
-            <select class="form-control" class="advancedform" name="InputRating">
-                <option selected disabled>Rating</option>
-                @foreach (var Rating in ViewBag.ListRating)
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="formcontainer">
+                <form action="/Database/SearchAllAttempts" method="get">
+                    <input class="form-control" type="text" name="InputTitle" />
+                    <input class="btn btn-primary" type="submit" value="Search by Title">
+                </form>
+                <form action="/Database/SearchAllAttempts" method="get">
+                    <select class="form-control" name="InputDifficulty">
+                        @foreach (var Difficulty in ViewBag.ListDifficulty)
+            {
+                            <option value="@Difficulty">@Difficulty</option>
+                        }
+                    </select>
+                    <input class="btn btn-primary" type="submit" value="Select Difficulty">
+                </form>
+                <form action="/Database/SearchAllAttempts" method="get">
+                    <select class="form-control" name="InputRating">
+                        @foreach (var Rating in ViewBag.ListRating)
+            {
+                            <option value="@Rating">@Rating</option>
+                        }
+                    </select>
+                    <input class="btn btn-primary" type="submit" value="Select Rating">
+                </form>
+            </div>
+
+            <br />
+
+            <h4>Advanced Search</h4>
+
+            <div class="advancedsearch">
+                <form action="/Database/AdvancedSearch" method="get">
+
+                    <div class="s1"><input class="form-control" class="advancedform" type="text" name="InputTitle" placeholder="Recipe" /></div>
+
+                    <div class="s2">
+                        <select class="form-control" class="advancedform" name="InputDifficulty">
+                            <option selected disabled>Difficulty</option>
+                            @foreach (var Difficulty in ViewBag.ListDifficulty)
+                            {
+                                <option value="@Difficulty">@Difficulty</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="s3">
+                        <select class="form-control" class="advancedform" name="InputRating">
+                            <option selected disabled>Rating</option>
+                            @foreach (var Rating in ViewBag.ListRating)
+                            {
+                                <option value="@Rating">@Rating</option>
+                            }
+                        </select>
+                    </div>
+
+                    <input class="btn btn-primary" type="submit" value="Search">
+                </form>
+            </div>
+
+            <br />
+            <table class="table table-hover">
+                <thead><tr><th></th><th>Title</th><th></th><th>Username</th><th>Difficulty</th><th>Rating</th></tr></thead>
+                @for (int i = 0; i < ViewBag.Results.Count; i++)
                 {
-                    <option value="@Rating">@Rating</option>
+                    <tr><td><img src="@ViewBag.Results[i].image" style="height: 100px" /></td><td>@ViewBag.Results[i].Recipe.Title</td><td><a href="/Home/SearchById?RecipeID=@ViewBag.Results[i].Recipe.RecipeID">Try this recipe?</a><td>@ViewBag.Emails[i]</td><td>@ViewBag.Results[i].Difficulty</td><td>@ViewBag.Results[i].Rating</td></tr>
                 }
-            </select>
+            </table>
         </div>
-
-        <input class="btn btn-primary" type="submit" value="Search">
-    </form>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
 </div>
-
-<br />
-<table class="table">
-    <thead><tr><th></th><th>Title</th><th></th><th>Username</th><th>Difficulty</th><th>Rating</th></tr></thead>
-    @for (int i = 0; i < ViewBag.Results.Count; i++)
-    {
-        <tr><td><img src="@ViewBag.Results[i].image" style="height: 100px" /></td><td>@ViewBag.Results[i].Recipe.Title</td><td><a href="/Home/SearchById?RecipeID=@ViewBag.Results[i].Recipe.RecipeID">Try this recipe?</a><td>@ViewBag.Emails[i]</td><td>@ViewBag.Results[i].Difficulty</td><td>@ViewBag.Results[i].Rating</td></tr>
-    }
-</table>

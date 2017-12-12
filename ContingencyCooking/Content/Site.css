@@ -1,6 +1,8 @@
 ﻿body {
+    font-family: 'Crete Round', serif;
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #DBBEA1;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -23,6 +25,43 @@ textarea {
     max-width: 280px;
 }
 
-/*h2 {
-    font-family: 'Knewave', cursive;
-}*/
+
+.panel-body {
+}
+.panel-heading {
+    background: #DB7F67;
+}
+
+.panel > .panel-heading {
+    background-image: none;
+    background-color: #DB7F67;
+    color: black;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: #3F292B;
+    border-color: #3F292B;
+}
+
+a:link {
+    color: #DB7F67;
+}
+
+/* visited link */
+a:visited {
+    color: #DB7F67;
+}
+
+/* mouse over link */
+a:hover {
+    color: #D34F73;
+}
+
+/* selected link */
+a:active {
+    color: #DB7F67;
+}

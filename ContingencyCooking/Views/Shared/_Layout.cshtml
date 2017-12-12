@@ -5,7 +5,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Cooking with Code</title>
-    @*<img src="~/Content/favicon.ico" />*@
     <link runat="server" rel="icon" href="~/Content/favicon.ico" type="image/ico" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -24,8 +23,6 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
-                    @*<li><a href="/Home/GetLasagna/">Get Lasagna</a></li>*@
                     <li><a href="/Home/Search/">Cook!</a></li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li><a href="/Database/DisplayUserAttempts?User_ID=@User.Identity.GetUserId()">My Results</a></li>
@@ -39,10 +36,14 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <span class="glyphicon glyphicon-globe"></span>
         <footer>
-            <p>&copy; @DateTime.Now.Year - <a href="https://github.com/evanricard/ContingencyCooking">Github</a>, 
-            @Html.ActionLink("Home", "Index", "Home"), @Html.ActionLink("About", "About", "Home")</p>
+            <div class="container-row">
+                <span class="glyphicon glyphicon-globe"></span>
+                <p>
+                    &copy; @DateTime.Now.Year - <a href="https://github.com/evanricard/ContingencyCooking">Github</a>,
+                    @Html.ActionLink("Home", "Index", "Home"), @Html.ActionLink("About", "About", "Home")
+                </p>
+            </div>
         </footer>
     </div>
 

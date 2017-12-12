@@ -88,7 +88,7 @@ namespace ContingencyCooking.Controllers
             return View("Level3");
         }
 
-        //
+
         public ActionResult ChooseDifficulty2(string RecipeID)
         {
             ContingencyCookingDAL DAL = new ContingencyCookingDAL();
@@ -200,6 +200,8 @@ namespace ContingencyCooking.Controllers
             return View();
         }
 
+        //G.R.A.P.H
+        //G.reatest R.epresentation of A.DO.NET - P.icturesque H.ealth
         public ActionResult Graph()
         {
             RecipeDBEntities ORM = new RecipeDBEntities();
@@ -207,7 +209,7 @@ namespace ContingencyCooking.Controllers
             var User_ID = User.Identity.GetUserId();
 
             List<RecipeAttempt> UserList = ORM.RecipeAttempts.Where(x => x.User_ID == User_ID).ToList();
-          
+
             ViewBag.AllResults = JsonConvert.SerializeObject(ORM.RecipeAttempts.ToList());
             ViewBag.YourResults = JsonConvert.SerializeObject(UserList);
             return View();

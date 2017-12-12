@@ -165,6 +165,7 @@ namespace ContingencyCooking.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
+
                 AddErrors(result);
             }
 

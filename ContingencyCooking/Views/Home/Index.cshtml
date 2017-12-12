@@ -33,6 +33,10 @@
 
     }
 
+    #fire{
+
+        font-size:xx-large;
+    }
     /*.col-lg-8{
 
         height:20%;
@@ -46,7 +50,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default" id="banner">
             <div class="panel-heading" style="text-align:center">
-                <h1>Cooking Contingency</h1>
+                <span class="glyphicon glyphicon-fire" id="fire"></span><h1>Cooking Contingency</h1>
             </div>
             <div class="panel-body bounding-box" style="background-color:#fff">
                 <h3 class="text-center">Welcome to Cookin' Contigency! You know what they say, "If you can't handle the heat, get out of the kitchen!"<br> </h3><br />
@@ -91,10 +95,10 @@
             </div>
             <div class="panel-body bounding-box">
                 <div class="list-group">
-                    <a href="/Home/Search" class="list-group-item list-group-item-action"><p class="glyphicon glyphicon-fire"></p>  Search for Recipes</a>
-                    <a href="/Database/DisplayUserAttempts?User_ID=@User.Identity.GetUserId()" class="list-group-item list-group-item-action"><p class="glyphicon glyphicon-fire"></p> View Your Profile</a>
-                    <a href="/Database/DisplayAllAttempts/" class="list-group-item list-group-item-action"><p class="glyphicon glyphicon-fire"></p> See other cooks creations!</a>
-                    <a href="/Leaderboard/DisplayLeaderboard/" class="list-group-item list-group-item-action"><p class="glyphicon glyphicon-fire"></p> Go to the Leaderboard!</a>
+                    <a href="/Home/Search" class="list-group-item list-group-item-action" style="text-align:center"><p class="glyphicon glyphicon-fire"></p>  Search for Recipes</a>
+                    <a href="/Database/DisplayUserAttempts?User_ID=@User.Identity.GetUserId()" class="list-group-item list-group-item-action" style="text-align:center"><p class="glyphicon glyphicon-fire"></p> View Your Profile</a>
+                    <a href="/Database/DisplayAllAttempts/" class="list-group-item list-group-item-action" style="text-align:center"><p class="glyphicon glyphicon-fire"></p> See other cooks creations!</a>
+                    <a href="/Leaderboard/DisplayLeaderboard/" class="list-group-item list-group-item-action" style="text-align:center"><p class="glyphicon glyphicon-fire"></p> Go to the Leaderboard!</a>
                 </div>
             </div>
         </div>

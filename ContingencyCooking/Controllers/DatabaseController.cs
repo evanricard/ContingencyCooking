@@ -191,7 +191,34 @@ namespace ContingencyCooking.Controllers
             ContingencyCookingDAL DAL = new ContingencyCookingDAL();
             List<RecipeAttempt> UserList = new List<RecipeAttempt>();
 
-            UserList = ORM.RecipeAttempts.Where(x => x.Recipe.Title.ToLower().Contains(InputTitle.ToLower())).ToList().Where(x => x.Difficulty.Contains(InputDifficulty)).ToList().Where(x => x.Rating.ToString().Contains(InputRating)).ToList();
+            if (InputTitle != null && InputDifficulty != null && InputRating != null) //111
+            {
+                UserList = ORM.RecipeAttempts.Where(x => x.Recipe.Title.ToLower().Contains(InputTitle.ToLower())).ToList().Where(x => x.Difficulty.Contains(InputDifficulty)).ToList().Where(x => x.Rating.ToString().Contains(InputRating)).ToList();
+            }
+            if (InputTitle != null && InputDifficulty != null && InputRating == null) //110
+            {
+                UserList = (ORM.RecipeAttempts.Where(x => x.Recipe.Title.ToLower().Contains(InputTitle.ToLower())).Where(x => x.Difficulty.Contains(InputDifficulty)).ToList());
+            }
+            if (InputTitle != null && InputDifficulty == null && InputRating == null) //100
+            {
+                UserList = (ORM.RecipeAttempts.Where(x => x.Recipe.Title.ToLower().Contains(InputTitle.ToLower())).ToList());
+            }
+            if (InputTitle != null && InputDifficulty == null && InputRating != null) //101
+            {
+                UserList = (ORM.RecipeAttempts.Where(x => x.Recipe.Title.ToLower().Contains(InputTitle.ToLower())).Where(x => x.Rating.ToString().Contains(InputRating)).ToList());
+            }
+            if (InputTitle == null && InputDifficulty != null && InputRating != null) //011
+            {
+                UserList = ORM.RecipeAttempts.Where(x => x.Difficulty.Contains(InputDifficulty)).Where(x => x.Rating.ToString().Contains(InputRating)).ToList();
+            }
+            if (InputTitle == null && InputDifficulty != null && InputRating == null) //010
+            {
+                UserList = ORM.RecipeAttempts.Where(x => x.Difficulty.Contains(InputDifficulty)).ToList();
+            }
+            if (InputTitle == null && InputDifficulty == null && InputRating != null) //001
+            {
+                UserList = ORM.RecipeAttempts.Where(x => x.Rating.ToString().Contains(InputRating)).ToList();
+            }
 
             List<string> UserEmails = DAL.GetUserEmailsFromAttempts(UserList);
 

@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Graph";
+}
+
+<h2>Statistics</h2>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Ratings of your attempts
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div id="Rating Chart"></div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+</div>
+    <div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Ratings of all attempts submitted
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div id="All Rating Chart"></div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+</div>
+@Html.Raw(ViewBag.Results);
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<link href="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/morrisjs/morris.css" rel="stylesheet" />
+<script src="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/morrisjs/morris.js"></script>
+<script src="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/morrisjs/morris.min.js"></script>
+<script src="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/raphael/raphael.js"></script>
+<script src="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/raphael/raphael.min.js"></script>
+<script src="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/jquery/jquery.js"></script>
+<script src="~/Content/startbootstrap-sb-admin-2-gh-pages/vendor/jquery/jquery.min.js"></script>
+
+<script>
+    var results = @Html.Raw(ViewBag.YourResults)
+        new Morris.Bar({
+            element: 'Rating Chart',
+            data: results,
+            xkey: 'Difficulty',
+            ykeys: ['Rating'],
+            labels: ['Rating'],
+            ymax: [5],
+        });
+    var results = @Html.Raw(ViewBag.AllResults)
+        new Morris.Bar({
+        element: 'All Rating Chart',
+        data: results,
+        xkey: 'Difficulty',
+        ykeys: ['Rating'],
+        labels: ['Rating'],
+        ymax: [5],
+        });
+</script>
+
+
+
+
+

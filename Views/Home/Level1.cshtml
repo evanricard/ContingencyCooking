@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewBag.Title = "Level1";
+}
+
+<style>
+    body {
+        font-family: sans-serif;
+        text-align: center;
+        background: url('@ViewBag.Photo') no-repeat center center fixed; /*center center for horizontal and vertical placement, then stay in viewport*/
+        background-size: cover; /*background area is completely covered by the background image*/
+    }
+
+    h1 {
+        font-family: 'Raleway', sans-serif;
+        text-align: center;
+        color: white;
+        margin-top: 30px;
+    }
+
+    .intro {
+        font-family: 'Open Sans', cursive;
+        color: white;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .blur {
+        background: url('@ViewBag.Photo') no-repeat center center fixed;
+        background-size: cover;
+        overflow: hidden;
+        filter: blur(9px);
+        position: absolute; /*uses the document body, and moves along with page scrolling.*/
+        height: 150%;
+        top: -50px;
+        left: -50px;
+        right: -50px;
+        bottom: -50px;
+    }
+
+    .border {
+        border-left: 2px solid rgba(255, 255, 255, 1);
+        border-right: 2px solid rgba(255, 255, 255, 1);
+        width: 80%;
+        height: auto;
+    }
+
+    .center {
+        position: absolute; /*uses the document body, and moves along with page scrolling*/
+        margin: auto; /*equal between the left and right margins*/
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0,0,0,0.50);
+        overflow: hidden;
+    }
+
+    .centerInFront {
+        position: absolute; /*uses the document body, and moves along with page scrolling*/
+        margin: auto; /*equal between the left and right margins*/
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0,0,0,0.50);
+        overflow-y: scroll;
+    }
+
+    #ingredientsTable{
+        color: white;
+    }
+
+    #instructions{
+        color: white;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    h2{
+        color: white;
+    }
+</style>
+
+<style>
+    table {
+        table-layout: fixed;
+    }
+
+    th {
+        font-size: 20px;
+    }
+
+    tr th {
+        text-align: center;
+    }
+
+    ::-webkit-scrollbar {
+        width: 0px;
+    }
+</style>
+
+<div class="border center">
+
+    <div class="blur"></div>
+
+    <div class="text centerInFront">
+        <div id="ingredientsTable">
+
+            <h2>Level1</h2>
+
+            <center><img src="@ViewBag.Photo" style="height: 250px" /><br /></center>
+
+            Recipe Name: @ViewBag.RecipeName<br />
+            Cuisine: @ViewBag.Cuisine<br />
+            <table class="table">
+                <thead><tr><th>Name</th><th>Quantity</th><th>Unit</th></tr></thead>
+                @for (int i = 0; i < ViewBag.Ingredients.Count; i++)
+                {
+                    <tr><td>@ViewBag.Ingredients[i].Name</td><td>@ViewBag.Ingredients[i].DisplayQuantity</td><td>@ViewBag.Ingredients[i].Unit</td></tr>
+                }
+            </table>
+        </div>
+
+        <div id="instructions">@ViewBag.Instructions</div>
+
+
+        <form action="/Home/RateExperience" method="post">
+            <input type="text" name="Difficulty" value="1" readonly hidden />
+            <input type="text" name="RecipeID" value="@ViewBag.RecipeID" readonly hidden />
+            <input type="submit" value="I am finished cooking!" /><br />
+        </form>
+        <br />
+    </div>
+
+</div>  

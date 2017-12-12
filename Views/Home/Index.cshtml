@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@using Microsoft.AspNet.Identity;
+<h1 style="text-align: center">Contingency Cooking!</h1>
+<br />
+<div class="container-fluid">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="text-align:center">
+                    <h3 class="panel-title itemName" >Welcome!</h3>
+                </div>
+                <div class="panel-body bounding-box">
+                    <h4 class="text-center itemDesc">Welcome to Contingency Cookin'! You know what they say, "If you can't handle the heat, get out of the kitchen!"<br /> In this true test of culinary skill, we invite users to demonstrate their cooking prowess by recreating common recipes.<br />The catch is, we can provide you with select information for the recipe and your challenge as a cuisine-connoisseur is to try to match your knowledge against ours!</h4><br />
+                </div>
+            </div>
+        </div>
+    <div class="col-md-4" style="text-align:center">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="text-align:center">
+                <h3 class="panel-title itemName">Getting started!</h3>
+            </div>
+            <div class="panel-body bounding-box">
+                
+                <dl class="list-group">
+                    <dd class="list-group-item"> Make sure you are registered and signed in.</dd>
+                    <dd class="list-group-item"> Head to the "Cook!" Section and find a recipe to test your cooking skills</dd>
+                    <dd class="list-group-item"> Upload a picture of your creation for your profile!</dd>
+                    <dd class="list-group-item"> Rate your creation from 1 - 5 stars!</dd>
+                    <dd class="list-group-item"> View all your cooking creations in your profile, but don't forget to view all the cooking concoctions in the "Results" and "Leaderboard" sections!</dd>
+                </dl><br />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="text-align:center">
+                <h3 class="panel-title itemName">Jump Around!</h3>
+            </div>
+            <div class="panel-body bounding-box">
+                <div class="list-group">
+                    <a href="/Home/Search" class="list-group-item list-group-item-action"> &#9889 Search for Recipes</a>
+                    <a href="/Database/DisplayUserAttempts?User_ID=@User.Identity.GetUserId()" class="list-group-item list-group-item-action">&#9889 View Your Profile</a>
+                    <a href="/Database/DisplayAllAttempts/" class="list-group-item list-group-item-action">&#9889 See other cooks creations!</a>
+                    <a href="/Leaderboard/DisplayLeaderboard/" class="list-group-item list-group-item-action">&#9889 Go to the Leaderboard!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

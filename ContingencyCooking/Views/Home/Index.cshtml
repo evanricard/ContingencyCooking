@@ -2,26 +2,78 @@
     ViewBag.Title = "Home Page";
 }
 @using Microsoft.AspNet.Identity;
-<h1 style="text-align: center">Cooking Contingency!</h1>
-<br />
-<div class="container-fluid">
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading" style="text-align:center">
-                    <h3 class="panel-title itemName" >Welcome!</h3>
-                </div>
-                <div class="panel-body bounding-box">
-                    <h4 class="text-center itemDesc">Welcome to Cookin' Contigency! You know what they say, "If you can't handle the heat, get out of the kitchen!"<br /> In this true test of culinary skill, we invite users to demonstrate their cooking prowess by recreating common recipes.<br />The catch is, we can provide you with select information for the recipe and your challenge as a cuisine-connoisseur is to try to match your knowledge against ours!</h4><br />
-                </div>
+
+<style>
+    #banner {
+        border: ridge;
+        border-width: 8px;
+        border-color: #3F292B;
+    }
+
+    #banner_ {
+        border: ridge;
+        border-width: 4px;
+        border-color: #3F292B;
+    }
+
+    .menuborder {
+        border: solid;
+        border-width: 2px;
+        border-color: #3F292B;
+        background-color: #fff;
+    }
+
+    .row {
+        margin-bottom:-200px;
+        padding-top: 20px;
+    }
+
+    h3{
+        font-style:italic;
+
+    }
+
+    /*.col-lg-8{
+
+        height:20%;
+    }*/
+
+</style>
+
+
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-12">
+        <div class="panel panel-default" id="banner">
+            <div class="panel-heading" style="text-align:center">
+                <h1>Cooking Contingency</h1>
+            </div>
+            <div class="panel-body bounding-box" style="background-color:#fff">
+                <h3 class="text-center">Welcome to Cookin' Contigency! You know what they say, "If you can't handle the heat, get out of the kitchen!"<br> </h3><br />
             </div>
         </div>
-    <div class="col-md-4" style="text-align:center">
-        <div class="panel panel-default">
+    </div>
+</div>
+
+<br />
+<div class="container-fluid">
+    <div class="col-md-4">
+        <div class="panel panel-default" id="banner_">
             <div class="panel-heading" style="text-align:center">
-                <h3 class="panel-title itemName">Getting started!</h3>
+                <h4 class="panel-title itemName">Welcome!</h4>
             </div>
             <div class="panel-body bounding-box">
-                
+                <h4><br /> In this true test of culinary skill, we invite users to demonstrate their cooking prowess by recreating common recipes.<br /> <br />    The catch is, we can provide you with select information for the recipe and your challenge as a cuisine-connoisseur is to try to match your knowledge against ours!</h4><br />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4" style="text-align:center">
+        <div class="panel panel-default" id="banner_">
+            <div class="panel-heading" style="text-align:center">
+                <h4 class="panel-title itemName">Getting started!</h4>
+            </div>
+            <div class="panel-body bounding-box">
+
                 <dl class="list-group">
                     <dd class="list-group-item"> Make sure you are registered and signed in.</dd>
                     <dd class="list-group-item"> Head to the "Cook!" Section and find a recipe to test your cooking skills</dd>
@@ -33,13 +85,13 @@
         </div>
     </div>
     <div class="col-md-4">
-        <div class="panel panel-default">
+        <div class="panel panel-default" id="banner_">
             <div class="panel-heading" style="text-align:center">
-                <h3 class="panel-title itemName">Jump Around!</h3>
+                <h4 class="panel-title itemName">Jump Around!</h4>
             </div>
             <div class="panel-body bounding-box">
                 <div class="list-group">
-                    <a href="/Home/Search" class="list-group-item list-group-item-action"><p class="glyphicon glyphicon-fire"></p> Search for Recipes</a>
+                    <a href="/Home/Search" class="list-group-item list-group-item-action"><p class="glyphicon glyphicon-fire"></p>  Search for Recipes</a>
                     <a href="/Database/DisplayUserAttempts?User_ID=@User.Identity.GetUserId()" class="list-group-item list-group-item-action"><p class="glyphicon glyphicon-fire"></p> View Your Profile</a>
                     <a href="/Database/DisplayAllAttempts/" class="list-group-item list-group-item-action"><p class="glyphicon glyphicon-fire"></p> See other cooks creations!</a>
                     <a href="/Leaderboard/DisplayLeaderboard/" class="list-group-item list-group-item-action"><p class="glyphicon glyphicon-fire"></p> Go to the Leaderboard!</a>
@@ -49,3 +101,7 @@
     </div>
 </div>
 
+
+@*<script>
+        --Javascript stuff--
+</script>*@

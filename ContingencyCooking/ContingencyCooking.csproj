@@ -251,6 +251,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\favicon.ico" />
     <Content Include="Content\Images\david.jpg" />
     <Content Include="Content\Images\dummy-image.jpg" />
     <Content Include="Content\Images\easy.jpg" />

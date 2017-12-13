@@ -3,6 +3,12 @@
     ViewBag.Title = "Difficulty";
 }
 <style>
+   #banner {
+        border: solid;
+        border-width: 4px;
+        border-color: #3F292B;
+    }
+
     a:link {
         color: black;
     }
@@ -19,7 +25,7 @@
 
 <a href="/Home/ChooseDifficulty1?RecipeID=@ViewBag.RecipeID">
     <div class="col-lg-4">
-        <div class="panel panel-default">
+        <div class="panel panel-default" id="banner">
             <!-- /.panel-heading -->
             <div class="panel-heading">
                 <strong>Mild</strong> <span class="glyphicon glyphicon-fire"></span>
@@ -34,7 +40,7 @@
 <a href="/Home/ChooseDifficulty2?RecipeID=@ViewBag.RecipeID">
     <div class="col-lg-4">
         <!-- /.panel-heading -->
-        <div class="panel panel-default">
+        <div class="panel panel-default" id="banner">
             <div class="panel-heading">
                 <strong>Medium</strong> <span class="glyphicon glyphicon-fire"></span> <span class="glyphicon glyphicon-fire"></span>
             </div>
@@ -47,7 +53,7 @@
 </a>
 <a href="/Home/ChooseDifficulty3?RecipeID=@ViewBag.RecipeID">
     <div class="col-lg-4">
-        <div class="panel panel-default">
+        <div class="panel panel-default" id="banner">
             <!-- /.panel-heading -->
             <div class="panel-heading">
                 <strong>Spicy</strong> <span class="glyphicon glyphicon-fire"></span> <span class="glyphicon glyphicon-fire"></span> <span class="glyphicon glyphicon-fire"></span>

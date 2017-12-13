@@ -7,11 +7,18 @@
 @using Microsoft.AspNet.Identity;
 @using Microsoft.AspNet.Identity.Owin;
 
+<style>
+    #banner {
+        border: solid;
+        border-width: 4px;
+        border-color: #3F292B;
+    }
+    </style>
 <div class="container">
     <div class="row">
         <br />
         <div class="col-lg-4">
-            <div class="panel panel-default">
+            <div class="panel panel-default" id="banner">
                 <div class="panel-heading">
                     <strong>Your "Recipe Attempt" progress!</strong><br /> - Plotted with Difficulty & Rating
                 </div>
@@ -24,7 +31,7 @@
             <!-- /.panel -->
         </div>
         <div class="col-lg-8">
-            <div class="panel panel-default">
+            <div class="panel panel-default" id="banner">
                 <div class="panel-heading">
                     <strong>Your "Recipe Attempt" List! </strong>
                 </div>

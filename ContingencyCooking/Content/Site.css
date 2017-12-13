@@ -27,6 +27,9 @@ textarea {
 
 
 .panel-body {
+    border: solid;
+    border-width: 4px;
+    border-color: #3F292B;
 }
 .panel-heading {
     background: #DB7F67;
@@ -64,4 +67,10 @@ a:hover {
 /* selected link */
 a:active {
     color: #DB7F67;
+}
+
+#panelid {
+    border: solid;
+    border-width: 4px;
+    border-color: #3F292B;
 }

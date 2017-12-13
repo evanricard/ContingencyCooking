@@ -1,11 +1,19 @@
 ﻿@{
     ViewBag.Title = "About";
 }
+<style>
+    #banner {
+        border: solid;
+        border-width: 4px;
+        border-color: #3F292B;
+    }
+</style>
+
 <h1 class="text-center">@ViewBag.Title</h1>
 <hr />
 <div class="container-fluid">
     <div class="col-md-4">
-        <div class="panel panel-default">
+        <div class="panel panel-default" id="banner">
             <div class="panel-heading" style="text-align:center">
                 <h3>David Ryda</h3>
             </div>
@@ -24,7 +32,7 @@
         </div>
     </div>
     <div class="col-md-4" style="text-align:center">
-        <div class="panel panel-default">
+        <div class="panel panel-default" id="banner">
             <div class="panel-heading" style="text-align:center">
 
                 <h3>Evan Ricard</h3>
@@ -45,7 +53,7 @@
         </div>
     </div>
     <div class="col-md-4">
-        <div class="panel panel-default">
+        <div class="panel panel-default" id="banner">
             <div class="panel-heading" style="text-align:center">
                 <h3>Pierce Lauring</h3>
             </div>

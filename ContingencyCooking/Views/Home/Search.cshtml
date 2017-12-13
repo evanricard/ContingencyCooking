@@ -2,11 +2,26 @@
 @{
     ViewBag.Title = "Search";
 }
-
-<h2 >Search for a recipe!</h2>
-<div class="jumbotron id="search"">
-    <form action="/Home/SearchRecipes" method="get">
-        <label form="searchbox">Enter a Recipe or Keyword: </label><input class="form-control" type="text" name="input" /><br />
-        <input class="btn btn-primary" type="submit" value="Search" id="searchbox" style="width: 100%">
-    </form>
+<style>
+    #banner {
+        border: solid;
+        border-width: 4px;
+        border-color: #3F292B;
+    }
+</style>
+<div class="col-lg-12">
+    <div class="panel panel-default" id="banner">
+        <div class="panel-heading">
+            <h2>Search for a recipe!</h2>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <form action="/Home/SearchRecipes" method="get">
+                <label form="searchbox">Enter a Recipe or Keyword: </label><input class="form-control" type="text" name="input" /><br />
+                <input class="btn btn-primary" type="submit" value="Search" id="searchbox" style="width: 100%">
+            </form>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
 </div>

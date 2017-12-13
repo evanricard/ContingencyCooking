@@ -3,17 +3,40 @@
     ViewBag.Title = "AttemptUpload";
 }
 
-<h4>Please upload a picture for your creation of @ViewBag.RecipeName!</h4>
+<style>
+    #banner {
+        border: solid;
+        border-width: 4px;
+        border-color: #3F292B;
+    }
+    #fire {
+        font-size: xx-large;
+    }
+</style>
 
-@using (Html.BeginForm("ImageUpload", "Cloudinary", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <p>
-        <input type="file" id="file" name="file" size="23" required/><br />
-        <label>RecipeID</label><input type="text" name="RecipeID" value="@ViewBag.RecipeID" readonly /><br />
-        <label>Difficulty</label><input type="text" name="Difficulty" value="@ViewBag.Difficulty" readonly /><br />
-    </p>
-    <p>
-        <input type="submit" value="Upload file" />
-    </p>
-}
+<div class="col-lg-12">
+    <div class="panel panel-default" id="banner">
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-camera" id="fire"></span><h4>Please upload a picture for your @ViewBag.RecipeName!</h4>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            @using (Html.BeginForm("ImageUpload", "Cloudinary", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <p>
+                    <input type="file" id="file" name="file" size="23" required /><br />
+                    <input type="text" name="RecipeID" value="@ViewBag.RecipeID" readonly hidden /><br />
+                    <input type="text" name="Difficulty" value="@ViewBag.Difficulty" readonly hidden /><br />
+                </p>
+                <p>
+                    <input type="submit" value="Upload file" />
+                </p>
+            }
+        </div>
+       
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>
+
 

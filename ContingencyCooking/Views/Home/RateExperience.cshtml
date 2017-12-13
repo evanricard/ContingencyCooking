@@ -3,29 +3,42 @@
     ViewBag.Title = "RateExperience";
 }
 @using Microsoft.AspNet.Identity
+<style>
+    #fire {
+        font-size: xx-large;
+    }
+</style>
 
-<div class="jumbotron"><h2>Rate Your Cooking Creation!</h2>
-    <br /><img src="@ViewBag.PictureURL" style="max-height: 300px"/> VS. <img src="@ViewBag.RecipeImageURL"  style="max-height: 300px"/><br />
-    <h3>@ViewBag.RecipeName</h3></div>
-<div class="container">
-    <form action="/Database/SubmitRecipeAttempt" method="post">
-        <input type="text" name="User_ID" value="@User.Identity.GetUserId()" readonly hidden/><br />
-        <input type="text"  name="RecipeID" value="@ViewBag.RecipeID" readonly hidden/><br />
-        <label>Difficulty</label><input type="text" class="form-control" name="Difficulty" value="@ViewBag.Difficulty" readonly /><br />
-        <label>Rating</label><select type="text"  class="form-control" name="Rating">
-            <option value="1">&#9733 &#9734 &#9734 &#9734 &#9734</option>
-            <option value="2">&#9733 &#9733 &#9734 &#9734 &#9734</option>
-            <option value="3">&#9733 &#9733 &#9733 &#9734 &#9734</option>
-            <option value="4">&#9733 &#9733 &#9733 &#9733 &#9734</option>
-            <option value="5">&#9733 &#9733 &#9733 &#9733 &#9733</option>
-        </select><br />
-        <label>image</label><input type="text" class="form-control" name="image" value="@ViewBag.PictureURL" /><br />
-        <input class="btn btn-primary" type="submit" value="Save your cooking creation!" id="searchbox" style="width: 100%"><br />
+<div class="col-lg-12">
+    <div class="panel panel-default" id="banner">
+        <div class="panel-heading" style="text-align: center">
+            <h2>Rate Your @ViewBag.RecipeName!</h2>
+            <br /><img src="@ViewBag.PictureURL" style="max-height: 300px" /><span class="glyphicon glyphicon-fire" id="fire"></span> VS. <span class="glyphicon glyphicon-fire" id="fire"></span><img src="@ViewBag.RecipeImageURL" style="max-height: 300px" /><br />
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <form action="/Database/SubmitRecipeAttempt" method="post">
+                <input type="text" name="User_ID" value="@User.Identity.GetUserId()" readonly hidden /><br />
+                <input type="text" name="RecipeID" value="@ViewBag.RecipeID" readonly hidden /><br />
+                <label>Difficulty</label><input type="text" class="form-control" name="Difficulty" value="@ViewBag.Difficulty" readonly /><br />
+                <label>Rating</label><select type="text" class="form-control" name="Rating">
+                    <option value="1">&#9733 &#9734 &#9734 &#9734 &#9734</option>
+                    <option value="2">&#9733 &#9733 &#9734 &#9734 &#9734</option>
+                    <option value="3">&#9733 &#9733 &#9733 &#9734 &#9734</option>
+                    <option value="4">&#9733 &#9733 &#9733 &#9733 &#9734</option>
+                    <option value="5">&#9733 &#9733 &#9733 &#9733 &#9733</option>
+                </select><br />
+                <input type="text" name="image" value="@ViewBag.PictureURL" readonly hidden /><br />
+                <input class="btn btn-primary" type="submit" value="Save your cooking creation!" id="searchbox" style="width: 100%"><br />
 
-    </form>
-    <br />
-    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Hey! Checkout this recipe I made! Think you could make this too?" data-url="@ViewBag.PictureURL" data-show-count="true">Tweet</a>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </form>
+            <br />
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Hey! Checkout this recipe I made! Think you could make this too?" data-url="@ViewBag.PictureURL" data-show-count="true">Tweet</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
 </div>
 
 

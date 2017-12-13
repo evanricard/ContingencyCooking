@@ -7,13 +7,33 @@
     #fire {
         font-size: xx-large;
     }
+
+    img {
+        border: 5px solid #3F292B;
+    }
+    div.panel-body {
+        display: block;
+        text-align: center;
+    }
+
+    form {
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+    }
+    #banner {
+        border: solid;
+        border-width: 4px;
+        border-color: #3F292B;
+    }
 </style>
 
 <div class="col-lg-12">
     <div class="panel panel-default" id="banner">
         <div class="panel-heading" style="text-align: center">
             <h2>Rate Your @ViewBag.RecipeName!</h2>
-            <br /><img src="@ViewBag.PictureURL" style="max-height: 300px" /><span class="glyphicon glyphicon-fire" id="fire"></span> VS. <span class="glyphicon glyphicon-fire" id="fire"></span><img src="@ViewBag.RecipeImageURL" style="max-height: 300px" /><br />
+            <br /><img src="@ViewBag.PictureURL" style="height: 240px" /><span class="glyphicon glyphicon-fire" id="fire"></span> VS. <span class="glyphicon glyphicon-fire" id="fire"></span><img src="@ViewBag.RecipeImageURL" style="height: 240px" /><br />
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
@@ -32,6 +52,7 @@
                 <input class="btn btn-primary" type="submit" value="Save your cooking creation!" id="searchbox" style="width: 100%"><br />
 
             </form>
+            <br />
             <br />
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Hey! Checkout this recipe I made! Think you could make this too?" data-url="@ViewBag.PictureURL" data-show-count="true">Tweet</a>
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

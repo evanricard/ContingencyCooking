@@ -24,7 +24,7 @@ namespace ContingencyCooking.Controllers
             RecipeDBEntities ORM = new RecipeDBEntities();
             try
             {
-                if (ORM.Recipes.Find(attempt.RecipeID) == null)
+                if (ORM.Recipes.Find(attempt.RecipeID) == null) //happens if no recipe exists. only for first time entries.
                 {
                     JObject JsonData = (JObject)Session["Recipe"];
 
@@ -162,9 +162,20 @@ namespace ContingencyCooking.Controllers
             ContingencyCookingDAL DAL = new ContingencyCookingDAL();
             List<RecipeAttempt> UserList = new List<RecipeAttempt>();
 
+            string[] splitInput = InputTitle.Split(' ');
+
             if (InputTitle != null && InputDifficulty == null && InputRating == null)
             {
-                UserList = (ORM.RecipeAttempts.Where(x => x.Recipe.Title.ToLower().Contains(InputTitle.ToLower())).ToList());
+                for (int i = 0; i < splitInput.Length; i++)
+                {
+                    if (InputTitle.Contains(splitInput[i]))
+                    {
+                        var temp = splitInput[i];
+                        UserList = ORM.RecipeAttempts.Where(x => x.Recipe.Title.ToLower().Contains(temp.ToString())).ToList();
+                    }
+                }
+
+                //UserList = (from p in ORM.RecipeAttempts where splitInput.Any(val => p.Recipe.Title.Contains(val)) select p).ToList();
             }
             else if (InputTitle == null && InputDifficulty != null && InputRating == null)
             {

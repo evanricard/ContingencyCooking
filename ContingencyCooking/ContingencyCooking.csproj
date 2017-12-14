@@ -220,8 +220,12 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LeaderboardRating.cs" />
     <Compile Include="Models\LeaderboardUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Rating.cs">
+      <DependentUpon>RecipeDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Recipe.cs">
       <DependentUpon>RecipeDB.tt</DependentUpon>
     </Compile>

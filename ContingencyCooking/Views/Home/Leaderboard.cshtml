@@ -38,6 +38,21 @@
                     <tr><td>@user.UserName.ToString()</td><td>@user.TotalAttempts</td><td>@user.AveDifficulty</td><td>@user.AveIngredients</td></tr>
                 }
             </table>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Title</th>
+                        <th>Number of Ratings</th>
+                        <th>Average Rating</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                @foreach (var rating in ViewBag.Ratings)
+                {
+                    <tr><td>@rating.UserName</td><td>@rating.Title</td><td>@rating.NumberOfRatings</td><td>@rating.AveRating</td><td><img src="@rating.Image" style="height: 120px" /></td></tr>
+                }
+            </table>
         </div>
         <!-- /.panel-body -->
     </div>

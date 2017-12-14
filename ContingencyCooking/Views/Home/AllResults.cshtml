@@ -8,6 +8,13 @@
 @using Microsoft.AspNet.Identity.Owin;
 
 <style>
+    span:host {
+        font-size: larger;
+        color: #D34F73;
+    }
+    .glyphicon {
+        font-size: 30px;
+    }
     .formcontainer {
         display:flex;
         justify-content: space-between;
@@ -118,10 +125,17 @@
 
             <br />
             <table class="table table-hover">
-                <thead><tr><th></th><th>Title</th><th></th><th>Username</th><th>Difficulty</th><th>Rating</th></tr></thead>
+                <thead><tr><th></th><th>Title</th><th></th><th>Username</th><th>Difficulty</th><th>Rating</th><th>Thumbs Up?</th></tr></thead>
                 @for (int i = 0; i < ViewBag.Results.Count; i++)
                 {
-                    <tr><td><img src="@ViewBag.Results[i].image" style="height: 100px" /></td><td>@ViewBag.Results[i].Recipe.Title</td><td><a href="/Home/SearchById?RecipeID=@ViewBag.Results[i].Recipe.RecipeID">Try this recipe?</a><td>@ViewBag.Emails[i]</td><td>@ViewBag.Results[i].Difficulty</td><td>@ViewBag.Results[i].Rating</td></tr>
+                    <tr><td><img src="@ViewBag.Results[i].image" style="height: 100px" /></td>
+                <td>@ViewBag.Results[i].Recipe.Title</td>
+                <td><a href="/Home/SearchById?RecipeID=@ViewBag.Results[i].Recipe.RecipeID">Try this recipe?</a>
+                <td>@ViewBag.Emails[i]</td>
+                <td>@ViewBag.Results[i].Difficulty</td>
+                <td>@ViewBag.Results[i].Rating</td>
+                <td><a href="/Database/SaveUserRating?AttemptID=@ViewBag.Results[i].AttemptID&Value=1"><span>&#128077;</span></a>
+                        <a href="/Database/SaveUserRating?AttemptID=@ViewBag.Results[i].AttemptID&Value=0"><span>&#128078;</span></a></td></tr>
                 }
             </table>
         </div>

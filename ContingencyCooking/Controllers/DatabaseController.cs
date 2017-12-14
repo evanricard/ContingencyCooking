@@ -240,5 +240,34 @@ namespace ContingencyCooking.Controllers
 
             return View("../Home/AllResults");
         }
+
+        public ActionResult SaveUserRating(int AttemptID, int Value)
+        {
+            RecipeDBEntities ORM = new RecipeDBEntities();
+
+            List<Rating> RatingList = ORM.Ratings.Where(x => x.AttemptID == AttemptID).ToList();
+            List<string> UserList = ORM.Ratings.Where(x => x.AttemptID == AttemptID).Select(x => x.User_ID).ToList();
+
+            if (UserList.Contains(User.Identity.GetUserId()))
+            {
+                Rating update = RatingList.FirstOrDefault(x => x.User_ID == User.Identity.GetUserId());
+                update.Rating1 = Value;
+                ORM.Entry(update).State = System.Data.Entity.EntityState.Modified;
+            }
+            else
+            {
+                Rating temp = new Rating();
+                temp.Rating1 = Value;
+                temp.User_ID = User.Identity.GetUserId();
+                temp.AttemptID = AttemptID;
+                ORM.Ratings.Add(temp);
+            }
+
+
+            ORM.SaveChanges();
+
+
+            return RedirectToAction("DisplayAllAttempts");
+        }
     }
 }

@@ -4,7 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RecipeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RecipeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ratings">
+          <Key>
+            <PropertyRef Name="RatingID" />
+          </Key>
+          <Property Name="RatingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rating" Type="int" />
+          <Property Name="AttemptID" Type="int" />
+          <Property Name="User_ID" Type="nvarchar" MaxLength="128" />
+        </EntityType>
         <EntityType Name="RecipeAttempts">
           <Key>
             <PropertyRef Name="AttemptID" />
@@ -12,7 +21,7 @@
           <Property Name="AttemptID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="User_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="RecipeID" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="Difficulty" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="Difficulty" Type="nvarchar" MaxLength="6" />
           <Property Name="Rating" Type="int" />
           <Property Name="image" Type="nvarchar(max)" />
         </EntityType>
@@ -21,11 +30,23 @@
             <PropertyRef Name="RecipeID" />
           </Key>
           <Property Name="RecipeID" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="Category" Type="nvarchar" MaxLength="50" />
-          <Property Name="Description" Type="nvarchar" MaxLength="250" />
-          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Category" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Title" Type="nvarchar(max)" />
           <Property Name="Ingredients_Num" Type="int" />
         </EntityType>
+        <Association Name="FK_Ratings_RecipeAttempts">
+          <End Role="RecipeAttempts" Type="Self.RecipeAttempts" Multiplicity="0..1" />
+          <End Role="Ratings" Type="Self.Ratings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecipeAttempts">
+              <PropertyRef Name="AttemptID" />
+            </Principal>
+            <Dependent Role="Ratings">
+              <PropertyRef Name="AttemptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_RecipeAttempts_Recipes">
           <End Role="Recipes" Type="Self.Recipes" Multiplicity="1" />
           <End Role="RecipeAttempts" Type="Self.RecipeAttempts" Multiplicity="*" />
@@ -39,15 +60,19 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="RecipeDBModelStoreContainer">
+          <EntitySet Name="Ratings" EntityType="Self.Ratings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RecipeAttempts" EntityType="Self.RecipeAttempts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recipes" EntityType="Self.Recipes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Ratings_RecipeAttempts" Association="Self.FK_Ratings_RecipeAttempts">
+            <End Role="RecipeAttempts" EntitySet="RecipeAttempts" />
+            <End Role="Ratings" EntitySet="Ratings" />
+          </AssociationSet>
           <AssociationSet Name="FK_RecipeAttempts_Recipes" Association="Self.FK_RecipeAttempts_Recipes">
             <End Role="Recipes" EntitySet="Recipes" />
             <End Role="RecipeAttempts" EntitySet="RecipeAttempts" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RecipeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -58,19 +83,20 @@
           <Property Name="AttemptID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="User_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RecipeID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Difficulty" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Difficulty" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
           <Property Name="Rating" Type="Int32" />
           <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Recipe" Relationship="Self.FK_RecipeAttempts_Recipes" FromRole="RecipeAttempts" ToRole="Recipes" />
+          <NavigationProperty Name="Ratings" Relationship="RecipeDBModel.FK_Ratings_RecipeAttempts" FromRole="RecipeAttempt" ToRole="Rating" />
         </EntityType>
         <EntityType Name="Recipe">
           <Key>
             <PropertyRef Name="RecipeID" />
           </Key>
           <Property Name="RecipeID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Ingredients_Num" Type="Int32" />
           <NavigationProperty Name="RecipeAttempts" Relationship="Self.FK_RecipeAttempts_Recipes" FromRole="Recipes" ToRole="RecipeAttempts" />
         </EntityType>
@@ -93,7 +119,34 @@
             <End Role="Recipes" EntitySet="Recipes" />
             <End Role="RecipeAttempts" EntitySet="RecipeAttempts" />
           </AssociationSet>
+          <EntitySet Name="Ratings" EntityType="RecipeDBModel.Rating" />
+          <AssociationSet Name="FK_Ratings_RecipeAttempts" Association="RecipeDBModel.FK_Ratings_RecipeAttempts">
+            <End Role="RecipeAttempt" EntitySet="RecipeAttempts" />
+            <End Role="Rating" EntitySet="Ratings" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="RatingID" />
+          </Key>
+          <Property Name="RatingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rating1" Type="Int32" />
+          <Property Name="AttemptID" Type="Int32" />
+          <Property Name="User_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RecipeAttempt" Relationship="RecipeDBModel.FK_Ratings_RecipeAttempts" FromRole="Rating" ToRole="RecipeAttempt" />
+        </EntityType>
+        <Association Name="FK_Ratings_RecipeAttempts">
+          <End Type="RecipeDBModel.RecipeAttempt" Role="RecipeAttempt" Multiplicity="0..1" />
+          <End Type="RecipeDBModel.Rating" Role="Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecipeAttempt">
+              <PropertyRef Name="AttemptID" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="AttemptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -120,6 +173,16 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Ingredients_Num" ColumnName="Ingredients_Num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ratings">
+            <EntityTypeMapping TypeName="RecipeDBModel.Rating">
+              <MappingFragment StoreEntitySet="Ratings">
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="AttemptID" ColumnName="AttemptID" />
+                <ScalarProperty Name="Rating1" ColumnName="Rating" />
+                <ScalarProperty Name="RatingID" ColumnName="RatingID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

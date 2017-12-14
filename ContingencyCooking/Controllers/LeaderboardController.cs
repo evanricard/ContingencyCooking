@@ -36,6 +36,26 @@ namespace ContingencyCooking.Controllers
 
                 LBlist.Add(temp);
             }
+            List<int?> RatingList = ORM.Ratings.Select(x => x.AttemptID).Distinct().ToList();
+
+            List<LeaderboardRating> LBRatingList = new List<LeaderboardRating>();
+
+
+            foreach (var Attempt in RatingList)
+            {
+                RecipeAttempt AttemptForLB = ORM.RecipeAttempts.Find(Attempt);
+                ApplicationUser tempUser = UserORM.Users.Find(AttemptForLB.User_ID);
+
+                LeaderboardRating temp = new LeaderboardRating();
+                temp.UserName = tempUser.Email;
+                temp.Image = AttemptForLB.image;
+                temp.Title = AttemptForLB.Recipe.Title;
+                double AveRating = (double)ORM.Ratings.Where(x => x.RecipeAttempt.AttemptID == AttemptForLB.AttemptID).Select(x => x.Rating1).Average();
+                temp.AveRating = String.Format("{0:P2}.", AveRating);
+                temp.NumberOfRatings = ORM.Ratings.Where(x => x.RecipeAttempt.AttemptID == AttemptForLB.AttemptID).Count();
+                LBRatingList.Add(temp);
+            }
+            ViewBag.Ratings = LBRatingList;
             ViewBag.Users = LBlist;
             return View("../Home/Leaderboard");
         }

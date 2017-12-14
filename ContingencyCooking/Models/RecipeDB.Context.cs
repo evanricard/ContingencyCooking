@@ -27,5 +27,6 @@ namespace ContingencyCooking.Models
     
         public virtual DbSet<RecipeAttempt> RecipeAttempts { get; set; }
         public virtual DbSet<Recipe> Recipes { get; set; }
+        public virtual DbSet<Rating> Ratings { get; set; }
     }
 }

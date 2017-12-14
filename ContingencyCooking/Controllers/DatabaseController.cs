@@ -240,7 +240,7 @@ namespace ContingencyCooking.Controllers
 
             return View("../Home/AllResults");
         }
-
+        [Authorize]
         public ActionResult SaveUserRating(int AttemptID, int Value)
         {
             RecipeDBEntities ORM = new RecipeDBEntities();

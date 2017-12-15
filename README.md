@@ -1,4 +1,4 @@
-# Contigency Cookin'
+# Recipe Wrecker
 
 ## Getting Started
 
@@ -9,20 +9,16 @@ The only catch is, we provide you with little to no information on a recipe and 
 to match your knowledge against ours!
 
 ### Cooking! 
-Give examples
-```
-(Show sweet pictures here)
 
-A step by step series of examples 
+*(Make sure you are registered and signed in.)*
 
-Say what the first step will be
+1. Navigate to the "Cook!" Section and find a recipe to test your cooking skills.
 
-Give the example
+2. Search for a recipe, pick a difficulty, and do your cooking!
 
-And repeat
+3. Rate your creation from 1 - 5 stars and upload a picture of your attempt! 
 
-End with an example of getting some data out of the system or using it for a little demo
-```
+4. View your cooking creations in your profile, but don't forget to view all the cooking concoctions in the "Results" and "Leaderboard" sections!
 
 ## Built With
 
@@ -32,29 +28,22 @@ End with an example of getting some data out of the system or using it for a lit
 ## Contributing
 
 If you'd like to contribute to the repository, send out a brief description of yourself and your goals for the changes
-you'd like to see. We're always open to ideas and suggestions.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. 
-For the versions available, see the [V.History](https://github.com/your/project/tags). 
+you'd like to see. We're always open to ideas and suggestions!
 
 ## Authors
 
-* **Pierce Lauring** - [LinkedIn](https://www.linkedin.com/in/pierce-lauring/): Pierce is a strong critical thinker with a passion for utilizing problem-solving skills in the coding and software development environment. 
-* **David Ryda** - [LinkedIn](https://www.linkedin.com/in/davidryda/): David's got a background in business logistics but his real expertise is in navigating data structures and figuring out how to logistically solve coding problems.
-* **Evan Ricard** - [LinkedIn](https://www.linkedin.com/in/evanricard/): Evan is a self-starter and a tech enthusiast. You'll find he often tries to approach problems from his unique perspective as a digital artist and modern-day programmer. 
-
-See also the list of [Contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+* **Pierce Lauring** - Pierce is a strong critical thinker with a passion for utilizing problem-solving skills in the coding and software development environment. [![alt-text][LinkedIn-logo]](https://www.linkedin.com/in/pierce-lauring/)
+* **David Ryda** - David's got a background in business logistics but his real expertise is in navigating data structures and figuring out how to logistically solve coding problems. [![alt-text][LinkedIn-logo]](https://www.linkedin.com/in/davidryda)
+* **Evan Ricard** - Evan is a self-starter and a tech enthusiast. You'll find he often tries to approach problems from his perspective as a digital artist and modern-day programmer. [![alt-text][LinkedIn-logo]](http://evanricard.com)
 
 ## Acknowledgments
 
-* [Github](https://github.com/pguenthe) - Sensei Guenther for teaching us C# and all that we know. 
-* [Github](https://github.com/kamel-rush) - Dr. K for his wisdom involving the intricacies of ASP.NET (MVC), security and database frameworks, and all things .NET related. 
+* [![alt-text][Github-logo]](https://github.com/pguenthe): Sensei Guenther for teaching us C# and all that we know. 
+* [![alt-text][Github-logo]](https://github.com/kamel-rush): Dr. K for his wisdom involving the intricacies of ASP.NET (MVC), security and database frameworks, and all things .NET related. 
 
-Last but not least, the rest of the Grand Circus staff, for all that they do and continue to do for their students. 
+##***Last but not least, the rest of the Grand Circus staff, for all that they do and continue to do for their students.***
 
+
+[LinkedIn-logo]: http://www.lesker.com/newweb/images/icon_linkedin_12x12.png
+[Github-logo]: https://www.codeproject.com/script/Membership/Images/octicons_github.png
+[Favicon]: https://pro2-bar-s3-cdn-cf6.myportfolio.com/5e6506facb3f7eee31ed048daf39d15b/aa236a49-3b62-4549-9300-3c2d30fab2b9_carw_1x1x32.png?h=a7f72ec08f52ff34e550431673a631f2

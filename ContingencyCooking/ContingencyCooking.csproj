@@ -405,7 +405,6 @@
     <Content Include="Content\startbootstrap-sb-admin-2-gh-pages\LICENSE" />
     <Content Include="Content\startbootstrap-sb-admin-2-gh-pages\package.json" />
     <Content Include="Content\startbootstrap-sb-admin-2-gh-pages\README.md" />
-    <Content Include="Content\startbootstrap-sb-admin-2-gh-pages\vendor\bootstrap-social\bootstrap-social.less" />
     <Content Include="Content\startbootstrap-sb-admin-2-gh-pages\vendor\bootstrap-social\bootstrap-social.scss" />
     <Content Include="Content\startbootstrap-sb-admin-2-gh-pages\vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\startbootstrap-sb-admin-2-gh-pages\vendor\bootstrap\fonts\glyphicons-halflings-regular.ttf" />

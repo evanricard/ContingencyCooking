@@ -1,8 +1,10 @@
+# (DEPRECATED...API's are expensive!)
+
 # Recipe Wrecker
 
 ## Getting Started
 
-Welcome to Contingency Cookin'! (Name subject to change)
+Welcome to Recipe Wrecker'!
 You know what they say, "If you can't handle the heat, get out of the kitchen!"
 In this true test of culinary skill, we invite users to demonstrate their cooking prowess by recreating common recipes. 
 The only catch is, we provide you with little to no information on a recipe and your challenge as a cuisine-connoisseur is to try 
@@ -22,8 +24,8 @@ to match your knowledge against ours!
 
 ## Built With
 
-* [BigOven](http://api2.bigoven.com/web/documentation) - The web framework used to gather aggregate data on ingredients, instructions, etc. for a given recipe
-* [Trello](https://trello.com/b/O81nvT6E/cooking-with-code) - Project management tool with a focus on Agile techniques 
+* [BigOven](http://api2.bigoven.com/web/documentation) - The web framework used to gather aggregate data on ingredients, instructions, for a given recipe
+* [Trello](https://trello.com/b/O81nvT6E/cooking-with-code) - Project management tool with a focus on **Agile** techniques 
 
 ## Contributing
 

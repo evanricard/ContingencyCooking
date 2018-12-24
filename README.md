@@ -1,4 +1,4 @@
-# (DEPRECATED...API's are expensive!)
+# (DEPRECATED...)
 
 # Recipe Wrecker
 
